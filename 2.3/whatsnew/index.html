@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>What’s new &#8212; CLiC User Guide v2.3.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=c058f7c8" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <script src="../_static/documentation_options.js?v=9a23c445"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="References" href="../references/" />
+    <link rel="prev" title="Appendices" href="../appendices/" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="what-s-new">
+<span id="whatsnew"></span><h1>What’s new<a class="headerlink" href="#what-s-new" title="Link to this heading">¶</a></h1>
+<section id="what-s-new-in-clic-2-3">
+<h2>What’s new in CLiC 2.3<a class="headerlink" href="#what-s-new-in-clic-2-3" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>CLiC has moved to <a class="reference external" href="https://clic-fiction.com">clic-fiction.com</a>.</p></li>
+<li><p>New <strong>FlexiConc</strong> tab for flexible reproducible concordance algorithms
+(see <a class="reference internal" href="../clicanalysis/flexiconc/#flexiconc"><span class="std std-ref">FlexiConc</span></a>).</p></li>
+<li><p>New <strong>DE19</strong> corpus: German 19th Century Reference Corpus (33 texts),
+compiled for the <em>Reading Concordances in the 21st Century</em> project.</p></li>
+</ul>
+</section>
+<section id="what-s-new-in-clic-2-1">
+<h2>What’s new in CLiC 2.1<a class="headerlink" href="#what-s-new-in-clic-2-1" title="Link to this heading">¶</a></h2>
+<p>CLiC v2.1 adds features to improve the accessibility of the website and
+share more about the website’s policies with the users.</p>
+</section>
+<section id="what-s-new-in-clic-2-0">
+<h2>What’s new in CLiC 2.0<a class="headerlink" href="#what-s-new-in-clic-2-0" title="Link to this heading">¶</a></h2>
+<p>There have been major changes to the back-end as the underlying database
+infrastructure has been replaced. For further technical details of this
+replacement, please refer to the <a class="reference internal" href="../references/#github-clic" id="id1"><span>[GitHub_CLiC]</span></a> repository. The focus of
+this user guide is the CLiC interface. Due to the changes of the
+database, some of the basic functions of CLiC – like the concordance –
+will give slightly different results.</p>
+<p>The main changes from previous versions to CLiC 2.0 that users should be
+aware of are:</p>
+<ul>
+<li><p><strong>New look</strong>:</p>
+<p>The table of contents on the landing page has been replaced with a
+carousel of summary images for the corpora (see
+<a class="reference internal" href="#figure-landing-page-2-0-0-19c"><span class="std std-numref">Fig. 47</span></a>). An interactive overview of
+the corpora can now be found in the <strong>Counts tab</strong>.</p>
+<p>Another change to the look is that in addition to the CLiC version
+number (i.e. the “release” of CLiC), the interface now also displays
+the version of the corpora. For a more detailed explanation see
+<a class="reference internal" href="../cliccorpora/#the-clic-corpora"><span class="std std-ref">The CLiC corpora</span></a>.</p>
+<figure class="align-default" id="id2">
+<span id="figure-landing-page-2-0-0-19c"></span><img alt="../_images/figure-landing-page-2_0_0_19C.png" src="../_images/figure-landing-page-2_0_0_19C.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 47 </span><span class="caption-text">The CLiC home screen with the menu in the side panel on
+the right</span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Changes to the <strong>tokenisation</strong> (i.e. what CLiC recognises as a
+“word”)</p>
+<p>The tokenisation of texts has changed from CLiC 2.0. It is now based
+on unicode standard rules, used both for queries and importing books.
+By contrast to previous versions, the main changes include:</p>
+<ol class="arabic simple">
+<li><p>Word forms ending in <cite>‘s</cite> are now distinct types. So, a search for
+<cite>mother</cite> or <cite>Oliver</cite> will no longer include <cite>mother’s</cite> or
+<cite>Oliver’s</cite>.</p></li>
+<li><p>Any surrounding punctuation is filtered from types, thus searching
+for “connisseur” will return tokens “connisseur” and
+“_connisseur_”.</p></li>
+</ol>
+<p>Also see the explanation of the Concordance tab
+<a class="reference internal" href="../clicanalysis/concordance/#search-the-corpora"><span class="std std-ref">Search the corpora</span></a>. More examples and the detailed technical
+documentation of the tokenizer is available from
+<a class="reference internal" href="../module/clic.tokenizer/#module-clic.tokenizer" title="clic.tokenizer"><code class="xref py py-mod docutils literal notranslate"><span class="pre">clic.tokenizer</span></code></a>.</p>
+</li>
+<li><p><strong>Searching all books by one author</strong></p>
+<p>Across all tabs, the “search the corpora” field now allows you to
+select all books from a particular author at once, e.g. all 7 books
+by Jane Austen.</p>
+</li>
+<li><p><strong>Concordances tab</strong></p>
+<p>In concordances, short titles of books are now always visible and full
+titles can be seen hovering over the short title. Concordance queries
+now follow the new tokenisation rules (and searches for exact types,
+e.g. “Oliver” will no longer return “Oliver’s”) and accept wildcards
+(e.g. you can now query “Oliver*” to find both “Oliver” and
+“Oliver’s”). Information on <strong>relative frequencies</strong> has been added to
+the output to simple concordances and to the new <strong>distribution plot
+view</strong>. See the documentation of the Concordance tab for more details:
+<a class="reference internal" href="../clicanalysis/concordance/#concordance"><span class="std std-ref">Concordance</span></a>.</p>
+</li>
+<li><p><strong>Subset</strong></p>
+<p>The new subset output shows percentage of text instead of relative
+frequency (unlike the concordance output). For example when displaying
+all quotes in book, the percentage indicates the proportion of the
+words in quotes.</p>
+</li>
+<li><p><strong>Clusters</strong></p>
+<p>The clusters search now ignores boundaries and only pays attention to
+token order. i.e. clusters can span adjacent quotes, but not chapters
+(as the title is in the way). You can also click on a cluster to
+retrieve a <strong>matching concordance search</strong>. If only one book is
+selected the frequency cutoff is 2.</p>
+<p>In previous versions of CLiC there were minor discrepancies between
+concordance and cluster counts. In CLiC 2.0, these have been resolved.</p>
+</li>
+<li><p><strong>Keywords tab</strong></p>
+<p>The keyword output has been simplified (the expected target/ref columns
+have been removed). You can click on a keyword or key cluster to
+retrieve a <strong>matching concordance search</strong> and a new <strong>swap button</strong>
+will reverse the target and reference corpus options.</p>
+</li>
+<li><p><strong>New Text tab</strong></p>
+<p>The text tab shows full book contents (to replace the
+chapter-by-chapter selection on CLiC 1.6 landing page). This tab is
+designed to show one book at a time and allows you to navigate to
+particular chapters. You can select which levels of annotation to
+display on the text (e.g. Sentences, Quotes, Short suspensions, Long
+suspensions, Embedded quotes). The text can now be easily copied and
+pasted into Microsoft Word documents etc.</p>
+</li>
+<li><p><strong>New Counts tab</strong></p>
+<p>The Counts tab shows an interactive overview of the corpora, with word
+counts within corpora, books and subsets.</p>
+</li>
+</ul>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../">CLiC User Guide</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search/" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/">Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">The CLiC corpora</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../cliccorpora/">The CLiC corpora</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Analysis tabs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../clicanalysis/concordance/">Concordance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../clicanalysis/flexiconc/">FlexiConc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../clicanalysis/subsets/">Subsets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../clicanalysis/clusters/">Clusters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../clicanalysis/keywords/">Keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../clicanalysis/counts/">Counts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../clicanalysis/texts/">Texts</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced topics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/api_usage/">CLiC API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/adding_corpora/">Uploading new texts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/development/">Developing the system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/production/">Managing a production instance of CLiC</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../known-issues/">List of known issues</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../appendices/">Appendices</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">What’s new</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../image_sources/">Cover Image Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../policies/">Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary/">Glossary of terms used</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../">Documentation overview</a><ul>
+      <li>Previous: <a href="../appendices/" title="previous chapter">Appendices</a></li>
+      <li>Next: <a href="../references/" title="next chapter">References</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Michaela Mahlberg, Viola Wiegand, Jamie Lentin & Anthony Hennessey.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.0.2</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/whatsnew.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

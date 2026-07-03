@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Keywords &#8212; CLiC User Guide v2.3.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css?v=c058f7c8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=27fed22d" />
+    <script src="../../_static/documentation_options.js?v=9a23c445"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Counts" href="../counts/" />
+    <link rel="prev" title="Clusters" href="../clusters/" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="keywords">
+<span id="id1"></span><h1>Keywords<a class="headerlink" href="#keywords" title="Link to this heading">¶</a></h1>
+<p>The keywords tool finds words (and phrases) that are used significantly
+more often in one corpus compared to another. CLiC incorporates the
+keyword extraction formula reported by <a class="reference internal" href="../../references/#rayson-garside-2000" id="id2"><span>[Rayson_Garside_2000]</span></a>. Apart
+from comparing single words, CLiC also allows you to compare clusters.
+Whereas the cluster tab focuses only on one corpus, the Keywords
+function can compare cluster lists. You have to make selections for the
+following options (also see
+<a class="reference internal" href="#figure-analysis-keywords-settings"><span class="std std-numref">Fig. 42</span></a>):</p>
+<ul class="simple">
+<li><p><strong>‘Target corpora’:</strong> Choose the corpus/corpora that you are
+interested in.</p>
+<ul>
+<li><p>‘within subset’: Specify which subset of the target corpus you
+want to compare (or simply choose ‘all text’)</p></li>
+</ul>
+</li>
+<li><p><strong>‘Reference corpora’:</strong> Choose the reference corpus to compare your
+target corpus to.</p>
+<ul>
+<li><p>‘within subset’: Specify the subset for the reference corpus.</p></li>
+</ul>
+</li>
+<li><p><strong>‘n-gram’:</strong> Do you want to compare single words (1-grams) or
+phrases (2-grams up to 7-grams)</p></li>
+</ul>
+<figure class="align-default" id="id4">
+<span id="figure-analysis-keywords-settings"></span><img alt="../../_images/figure-analysis-keywords-settings.png" src="../../_images/figure-analysis-keywords-settings.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 42 </span><span class="caption-text">The settings for the keywords tab require you to select
+two sets of corpora for the keyword comparison – target and reference
+– and their corresponding subsets</span><a class="headerlink" href="#id4" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id5">
+<span id="figure-analysis-keywords-19thcentury"></span><img alt="../../_images/figure-analysis-keywords-19thcentury.png" src="../../_images/figure-analysis-keywords-19thcentury.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 43 </span><span class="caption-text">Key 5-word clusters in Oliver Twist ‘quotes’ compared to
+‘quotes’ in the 19th Century Reference Corpus</span><a class="headerlink" href="#id5" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>Note that you have to select a subset for each of the two corpora or
+you’ll see the error message: “Please select a subset”. So, for example,
+when comparing 5-grams in <em>Oliver Twist</em> (quotes) against the 19th
+Century Reference Corpus (quotes), we retrieve the results displayed in
+<a class="reference internal" href="#figure-analysis-keywords-19thcentury"><span class="std std-numref">Fig. 43</span></a> (for a p-value of
+0.0001). The keyword output is by default ordered by the log-likelihood
+(LL) value, the ‘keyness’ statistic used here (for more details on the
+calculation, please refer to <a class="reference internal" href="../../references/#rayson-garside-2000" id="id3"><span>[Rayson_Garside_2000]</span></a>).</p>
+<p>The frequency threshold of 5 used for the cluster tab is not applied to
+the keyword tab, so that all frequencies are compared. The keyword
+output shows the top 3000 results (for most comparisons, you will yield
+fewer results, though). Moreover, CLiC only generates so-called
+‘positive keywords’: those that are overused in the target corpus
+compared to the reference corpus. CLiC does not generate ‘negative’ or
+‘underused’ keywords.</p>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../">CLiC User Guide</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../search/" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/">Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">The CLiC corpora</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../cliccorpora/">The CLiC corpora</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Analysis tabs</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../concordance/">Concordance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../flexiconc/">FlexiConc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subsets/">Subsets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../clusters/">Clusters</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../counts/">Counts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../texts/">Texts</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced topics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/api_usage/">CLiC API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/adding_corpora/">Uploading new texts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/development/">Developing the system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/production/">Managing a production instance of CLiC</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../known-issues/">List of known issues</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../appendices/">Appendices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../whatsnew/">What’s new</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../references/">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../image_sources/">Cover Image Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../policies/">Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary/">Glossary of terms used</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../">Documentation overview</a><ul>
+      <li>Previous: <a href="../clusters/" title="previous chapter">Clusters</a></li>
+      <li>Next: <a href="../counts/" title="next chapter">Counts</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Michaela Mahlberg, Viola Wiegand, Jamie Lentin & Anthony Hennessey.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.0.2</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../../_sources/clicanalysis/keywords.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
