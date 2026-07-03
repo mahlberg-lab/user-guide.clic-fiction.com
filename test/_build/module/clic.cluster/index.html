@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>clic.cluster: Cluster endpoint &#8212; CLiC User Guide v2.3.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css?v=c058f7c8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=27fed22d" />
+    <script src="../../_static/documentation_options.js?v=9a23c445"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="clic-cluster-cluster-endpoint">
+<span id="module-clic.cluster"></span><h1>clic.cluster: Cluster endpoint<a class="headerlink" href="#clic-cluster-cluster-endpoint" title="Link to this heading">¶</a></h1>
+<p>Return a list of word clusters, and their frequency within the given texts.</p>
+<ul class="simple">
+<li><p>corpora: 1+ corpus name (e.g. ‘dickens’) or book name (‘AgnesG’) to search within</p></li>
+<li><p>subset: subset to search through, one of shortsus/longsus/nonquote/quote/all. Default ‘all’ (i.e. all text)</p></li>
+<li><p>clusterlength: cluster length to search for, 1 or more. Default 1</p></li>
+<li><p>cutoff: The cutoff frequency, if an cluster occurs less times than this it is not returned. Default ‘5’</p></li>
+</ul>
+<p>Parameters should be provided in querystring format, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>?corpora=dickens&amp;corpora=AgnesG&amp;subset=quote&amp;clusterlength=5
+</pre></div>
+</div>
+<p>Returns a <code class="docutils literal notranslate"><span class="pre">data</span></code> array, one entry per result. Each item is an array of <code class="docutils literal notranslate"><span class="pre">[cluster,</span> <span class="pre">frequency]</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">version</span></code> object gives both the current version of CLiC and the revision of the
+corpora ingested in the database.</p>
+<p>Examples:</p>
+<p>/api/cluster?corpora=AgnesG&amp;subset=longsus:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:[</span>
+        <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="mi">13</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">&quot;said&quot;</span><span class="p">,</span><span class="mi">13</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">&quot;she&quot;</span><span class="p">,</span><span class="mi">16</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">&quot;i&quot;</span><span class="p">,</span><span class="mi">13</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">&quot;and&quot;</span><span class="p">,</span><span class="mi">12</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">&quot;the&quot;</span><span class="p">,</span><span class="mi">13</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">&quot;of&quot;</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">&quot;replied&quot;</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">&quot;to&quot;</span><span class="p">,</span><span class="mi">9</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">&quot;in&quot;</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">&quot;as&quot;</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">&quot;her&quot;</span><span class="p">,</span><span class="mi">7</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">&quot;it&quot;</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">&quot;he&quot;</span><span class="p">,</span><span class="mi">7</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">&quot;my&quot;</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;199 clusters with a frequency less than 5 are not shown&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="s2">&quot;info&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;stack&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span>
+        <span class="s2">&quot;error&quot;</span><span class="p">:</span><span class="s2">&quot;UserError&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;version&quot;</span><span class="p">:{</span><span class="s2">&quot;corpora&quot;</span><span class="p">:</span><span class="s2">&quot;master:2affe56&quot;</span><span class="p">,</span><span class="s2">&quot;clic:import&quot;</span><span class="p">:</span><span class="s2">&quot;1.6:876222b&quot;</span><span class="p">,</span><span class="s2">&quot;clic&quot;</span><span class="p">:</span><span class="s2">&quot;v1.6.1&quot;</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="http://clic.bham.ac.uk/api/cluster?corpora=AgnesG&amp;clusterlength=3">http://clic.bham.ac.uk/api/cluster?corpora=AgnesG&amp;clusterlength=3</a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:[</span>
+        <span class="p">[</span><span class="s2">&quot;i could not&quot;</span><span class="p">,</span><span class="mi">35</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">&quot;as well as&quot;</span><span class="p">,</span><span class="mi">21</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">&quot;i did not&quot;</span><span class="p">,</span><span class="mi">23</span><span class="p">],</span>
+         <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;56566 clusters with a frequency less than 5 are not shown&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="s2">&quot;info&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;stack&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span>
+        <span class="s2">&quot;error&quot;</span><span class="p">:</span><span class="s2">&quot;UserError&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;version&quot;</span><span class="p">:{</span><span class="s2">&quot;corpora&quot;</span><span class="p">:</span><span class="s2">&quot;master:2affe56&quot;</span><span class="p">,</span><span class="s2">&quot;clic:import&quot;</span><span class="p">:</span><span class="s2">&quot;1.6:876222b&quot;</span><span class="p">,</span><span class="s2">&quot;clic&quot;</span><span class="p">:</span><span class="s2">&quot;v1.6.1&quot;</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<section id="method">
+<h2>Method<a class="headerlink" href="#method" title="Link to this heading">¶</a></h2>
+<p>The cluster search peforms the following steps:</p>
+<ol class="arabic simple">
+<li><p>Resolve the corpora option to a list of book IDs, translate the subset
+selection to a database region. If the subset ‘all’ is selected, use
+chapters as our region.</p></li>
+<li><p>Form a list of both tokens in the selected region. Order these by their
+overall position in book.</p></li>
+<li><p>Consider each (clusterlength) set of items in the list. If there are any
+gaps in their overall position, we discard the cluster. This means:</p>
+<ul class="simple">
+<li><p>Clusters will span adjacent regions, e.g. a cluster spanning 2 adjacent quotes
+(i.e. without intervening non-quote text) will be included.</p></li>
+<li><p>Clusters will not span 2 adjacent chapters, since the chapter title tokens
+will cause a gap in the tokens.</p></li>
+</ul>
+</li>
+<li><p>For the remaining clusters, count instances of each unique cluster, applying
+frequency cut-off before returning result.</p></li>
+</ol>
+</section>
+<section id="examples-edge-cases">
+<h2>Examples / edge cases<a class="headerlink" href="#examples-edge-cases" title="Link to this heading">¶</a></h2>
+<p>These are the corpora we use for the following tests:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">db_cur</span> <span class="o">=</span> <span class="n">test_database</span><span class="p">(</span>
+<span class="gp">... </span><span class="n">alice</span><span class="o">=</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="gp">... </span><span class="s1">Alice’s Adventures in Wonderland</span>
+<span class="gp">... </span><span class="s1">Lewis Carroll</span>
+<span class="gp">...</span>
+<span class="gp">... </span><span class="s1">CHAPTER I. Down the Rabbit-Hole</span>
+<span class="gp">...</span>
+<span class="gp">... </span><span class="s1">Alice was beginning to get very tired of sitting by her sister on the</span>
+<span class="gp">... </span><span class="s1">bank, and of having nothing to do:</span>
+<span class="gp">... </span><span class="s1">&#39;&#39;&#39;</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
+<span class="gp">... </span><span class="n">willows</span><span class="o">=</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="gp">... </span><span class="s1">The Wind in the Willows</span>
+<span class="gp">... </span><span class="s1">Kenneth Grahame</span>
+<span class="gp">...</span>
+<span class="gp">...</span>
+<span class="gp">... </span><span class="s1">CHAPTER I. THE RIVER BANK</span>
+<span class="gp">...</span>
+<span class="gp">... </span><span class="s1">The Rat said nothing, but stooped and unfastened a rope and hauled</span>
+<span class="gp">... </span><span class="s1">on it; then lightly stepped into a little boat which the Mole had not</span>
+<span class="gp">... </span><span class="s1">observed. It was painted blue outside and white within, and was just the</span>
+<span class="gp">... </span><span class="s1">size for two animals; and the Mole’s whole heart went out to it at once,</span>
+<span class="gp">... </span><span class="s1">even though he did not yet fully understand its uses.</span>
+<span class="gp">...</span>
+<span class="gp">... </span><span class="s1">‘This has been a wonderful day!’ said he, as the Rat shoved off and took</span>
+<span class="gp">... </span><span class="s1">to the sculls again. ‘Do you know, I’ve never been in a boat before in</span>
+<span class="gp">... </span><span class="s1">all my life.’</span>
+<span class="gp">...</span>
+<span class="gp">... </span><span class="s1">‘What?’ cried the Rat, open-mouthed: ‘Never been in a--you never--well</span>
+<span class="gp">... </span><span class="s1">I--what have you been doing, then?’</span>
+<span class="gp">...</span>
+<span class="gp">... </span><span class="s1">‘Is it so nice as all that?’ asked the Mole shyly, though he was quite</span>
+<span class="gp">... </span><span class="s1">prepared to believe it as he leant back in his seat and surveyed the</span>
+<span class="gp">... </span><span class="s1">cushions, the oars, the rowlocks, and all the fascinating fittings, and</span>
+<span class="gp">... </span><span class="s1">felt the boat sway lightly under him.</span>
+<span class="gp">...</span>
+<span class="gp">... </span><span class="s1">CHAPTER II. THE OPEN ROAD</span>
+<span class="gp">...</span>
+<span class="gp">...</span>
+<span class="gp">... </span><span class="s1">‘Ratty,’ said the Mole suddenly, one bright summer morning, ‘if you</span>
+<span class="gp">... </span><span class="s1">please, I want to ask you a favour.’</span>
+<span class="gp">...</span>
+<span class="gp">... </span><span class="s1">&#39;&#39;&#39;</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Searching for all clusters and filtering for ones with “mole” in, we see that
+“the Mole” and “the Mole’s” count as different clusters:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">format_cluster</span><span class="p">(</span><span class="n">cluster</span><span class="p">(</span><span class="n">db_cur</span><span class="p">,</span> <span class="n">corpora</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;willows&#39;</span><span class="p">],</span>
+<span class="gp">... </span>  <span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;all&#39;</span><span class="p">],</span> <span class="n">clusterlength</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;2&#39;</span><span class="p">],</span> <span class="n">cutoff</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">]))</span> <span class="k">if</span> <span class="s1">&#39;mole&#39;</span> <span class="ow">in</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+<span class="go">[(&#39;mole had&#39;, 1), (&#39;mole shyly&#39;, 1), (&#39;mole suddenly&#39;, 1),</span>
+<span class="go"> (&quot;mole&#39;s whole&quot;, 1), (&#39;the mole&#39;, 3), (&quot;the mole&#39;s&quot;, 1)]</span>
+</pre></div>
+</div>
+<p>Instances of “The Rat” and “the Rat” are combined though, since the types ignore case:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">format_cluster</span><span class="p">(</span><span class="n">cluster</span><span class="p">(</span><span class="n">db_cur</span><span class="p">,</span> <span class="n">corpora</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;willows&#39;</span><span class="p">],</span>
+<span class="gp">... </span>  <span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;all&#39;</span><span class="p">],</span> <span class="n">clusterlength</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;2&#39;</span><span class="p">],</span> <span class="n">cutoff</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">]))</span> <span class="k">if</span> <span class="s1">&#39;rat&#39;</span> <span class="ow">in</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+<span class="go">[(&#39;rat open-mouthed&#39;, 1), (&#39;rat said&#39;, 1), (&#39;rat shoved&#39;, 1), (&#39;ratty said&#39;, 1),</span>
+<span class="go"> (&#39;the rat&#39;, 3)]</span>
+</pre></div>
+</div>
+<p>There are no clusters with “willows” or “chapter” in, as they are outside the
+chapter text:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">format_cluster</span><span class="p">(</span><span class="n">cluster</span><span class="p">(</span><span class="n">db_cur</span><span class="p">,</span> <span class="n">corpora</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;willows&#39;</span><span class="p">],</span>
+<span class="gp">... </span>  <span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;all&#39;</span><span class="p">],</span> <span class="n">clusterlength</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;2&#39;</span><span class="p">],</span> <span class="n">cutoff</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">]))</span> <span class="k">if</span> <span class="s1">&#39;willows&#39;</span> <span class="ow">in</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+<span class="go">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">format_cluster</span><span class="p">(</span><span class="n">cluster</span><span class="p">(</span><span class="n">db_cur</span><span class="p">,</span> <span class="n">corpora</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;willows&#39;</span><span class="p">],</span>
+<span class="gp">... </span>  <span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;all&#39;</span><span class="p">],</span> <span class="n">clusterlength</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;2&#39;</span><span class="p">],</span> <span class="n">cutoff</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">]))</span> <span class="k">if</span> <span class="s1">&#39;chapter&#39;</span> <span class="ow">in</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<p>Paragraphs aren’t considered a boundary, as “Life.’ / ‘What” (2nd–3rd
+paragraph) is a cluster:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">format_cluster</span><span class="p">(</span><span class="n">cluster</span><span class="p">(</span><span class="n">db_cur</span><span class="p">,</span> <span class="n">corpora</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;willows&#39;</span><span class="p">],</span>
+<span class="gp">... </span>  <span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;all&#39;</span><span class="p">],</span> <span class="n">clusterlength</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;2&#39;</span><span class="p">],</span> <span class="n">cutoff</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">]))</span> <span class="k">if</span> <span class="s1">&#39;life&#39;</span> <span class="ow">in</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+<span class="go">[(&#39;life what&#39;, 1), (&#39;my life&#39;, 1)]</span>
+</pre></div>
+</div>
+<p>…however, “him ‘Ratty” (Ch 1– Ch 2) is not, the chapter title is in the way:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">format_cluster</span><span class="p">(</span><span class="n">cluster</span><span class="p">(</span><span class="n">db_cur</span><span class="p">,</span> <span class="n">corpora</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;willows&#39;</span><span class="p">],</span>
+<span class="gp">... </span>  <span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;all&#39;</span><span class="p">],</span> <span class="n">clusterlength</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;2&#39;</span><span class="p">],</span> <span class="n">cutoff</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">]))</span> <span class="k">if</span> <span class="s1">&#39;ratty&#39;</span> <span class="ow">in</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+<span class="go">[(&#39;ratty said&#39;, 1)]</span>
+</pre></div>
+</div>
+<p>When selecting across all text, quotes are not considered boundaries:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">format_cluster</span><span class="p">(</span><span class="n">cluster</span><span class="p">(</span><span class="n">db_cur</span><span class="p">,</span> <span class="n">corpora</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;willows&#39;</span><span class="p">],</span>
+<span class="gp">... </span>  <span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;all&#39;</span><span class="p">],</span> <span class="n">clusterlength</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;2&#39;</span><span class="p">],</span> <span class="n">cutoff</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">]))</span> <span class="k">if</span> <span class="s1">&#39;day&#39;</span> <span class="ow">in</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+<span class="go">[(&#39;day said&#39;, 1), (&#39;wonderful day&#39;, 1)]</span>
+</pre></div>
+</div>
+<p>But if we only select within quotes, we do not span to the next quote:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">format_cluster</span><span class="p">(</span><span class="n">cluster</span><span class="p">(</span><span class="n">db_cur</span><span class="p">,</span> <span class="n">corpora</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;willows&#39;</span><span class="p">],</span>
+<span class="gp">... </span>  <span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;quote&#39;</span><span class="p">],</span> <span class="n">clusterlength</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;2&#39;</span><span class="p">],</span> <span class="n">cutoff</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">]))</span> <span class="k">if</span> <span class="s1">&#39;day&#39;</span> <span class="ow">in</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+<span class="go">[(&#39;wonderful day&#39;, 1)]</span>
+</pre></div>
+</div>
+<p>We do not treat end-of-quotes as a boundary. If quotes are adjacent then we
+will get a cluster that straddles the quote boundary in the 3rd and 4th
+paragraph:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">format_cluster</span><span class="p">(</span><span class="n">cluster</span><span class="p">(</span><span class="n">db_cur</span><span class="p">,</span> <span class="n">corpora</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;willows&#39;</span><span class="p">],</span>
+<span class="gp">... </span>  <span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;quote&#39;</span><span class="p">],</span> <span class="n">clusterlength</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;2&#39;</span><span class="p">],</span> <span class="n">cutoff</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">]))</span> <span class="k">if</span> <span class="s1">&#39;then&#39;</span> <span class="ow">in</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+<span class="go">[(&#39;doing then&#39;, 1), (&#39;then is&#39;, 1)]</span>
+</pre></div>
+</div>
+<p>We do not form clusters across books when selecting multiple books:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">format_cluster</span><span class="p">(</span><span class="n">cluster</span><span class="p">(</span><span class="n">db_cur</span><span class="p">,</span> <span class="n">corpora</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;alice&#39;</span><span class="p">,</span> <span class="s1">&#39;willows&#39;</span><span class="p">],</span>
+<span class="gp">... </span>  <span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;nonquote&#39;</span><span class="p">],</span> <span class="n">clusterlength</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;2&#39;</span><span class="p">],</span> <span class="n">cutoff</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">]))</span> <span class="k">if</span> <span class="s1">&#39;nothing&#39;</span> <span class="ow">in</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+<span class="go">[(&#39;having nothing&#39;, 1), (&#39;nothing but&#39;, 1),</span>
+<span class="go"> (&#39;nothing to&#39;, 1), (&#39;said nothing&#39;, 1)]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">format_cluster</span><span class="p">(</span><span class="n">cluster</span><span class="p">(</span><span class="n">db_cur</span><span class="p">,</span> <span class="n">corpora</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;alice&#39;</span><span class="p">,</span> <span class="s1">&#39;willows&#39;</span><span class="p">],</span>
+<span class="gp">... </span>  <span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;nonquote&#39;</span><span class="p">],</span> <span class="n">clusterlength</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;2&#39;</span><span class="p">],</span> <span class="n">cutoff</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">]))</span> <span class="k">if</span> <span class="s1">&#39;alice&#39;</span> <span class="ow">in</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+<span class="go">[(&#39;alice was&#39;, 1)]</span>
+</pre></div>
+</div>
+</section>
+</section>
+<dl class="py function">
+<dt class="sig sig-object py" id="clic.cluster.cluster">
+<span class="sig-prename descclassname"><span class="pre">clic.cluster.</span></span><span class="sig-name descname"><span class="pre">cluster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cur</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['all']</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">corpora</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['dickens']</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clusterlength</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['1']</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#clic.cluster.cluster" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="clic.cluster.get_word_list">
+<span class="sig-prename descclassname"><span class="pre">clic.cluster.</span></span><span class="sig-name descname"><span class="pre">get_word_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cur</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">book_ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rclass_ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clusterlength</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#clic.cluster.get_word_list" title="Link to this definition">¶</a></dt>
+<dd><p>Yields tuples of:
+- Concatenated tokens
+- Frequency of them in given text</p>
+</dd></dl>
+
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../">CLiC User Guide</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../search/" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/">Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">The CLiC corpora</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../cliccorpora/">The CLiC corpora</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Analysis tabs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../clicanalysis/concordance/">Concordance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../clicanalysis/flexiconc/">FlexiConc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../clicanalysis/subsets/">Subsets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../clicanalysis/clusters/">Clusters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../clicanalysis/keywords/">Keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../clicanalysis/counts/">Counts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../clicanalysis/texts/">Texts</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced topics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/api_usage/">CLiC API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/adding_corpora/">Uploading new texts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/development/">Developing the system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/production/">Managing a production instance of CLiC</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../known-issues/">List of known issues</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../appendices/">Appendices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../whatsnew/">What’s new</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../references/">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../image_sources/">Cover Image Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../policies/">Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary/">Glossary of terms used</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Michaela Mahlberg, Viola Wiegand, Jamie Lentin & Anthony Hennessey.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.0.2</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../../_sources/module/clic.cluster.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Concordance &#8212; CLiC User Guide v2.3.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css?v=c058f7c8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=27fed22d" />
+    <script src="../../_static/documentation_options.js?v=9a23c445"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="FlexiConc" href="../flexiconc/" />
+    <link rel="prev" title="The CLiC corpora" href="../../cliccorpora/" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="concordance">
+<span id="id1"></span><h1>Concordance<a class="headerlink" href="#concordance" title="Link to this heading">¶</a></h1>
+<p>Clicking onto the <strong>‘Concordance’</strong> tab will take you to the concordance
+view. In order to create a concordance, you will need to select a corpus
+to search in (see <a class="reference internal" href="../../cliccorpora/#the-clic-corpora"><span class="std std-ref">The CLiC corpora</span></a>).</p>
+<section id="search-the-corpora">
+<h2>Search the corpora<a class="headerlink" href="#search-the-corpora" title="Link to this heading">¶</a></h2>
+<p>This is where you select a corpus to search in. The
+selection is very flexible and lets you pick a pre-defined corpus (see <a class="reference internal" href="../../cliccorpora/#the-clic-corpora"><span class="std std-ref">The CLiC corpora</span></a>)
+or choose your own subcorpus – with any of the books available in CLiC.</p>
+</section>
+<section id="only-in-subsets">
+<h2>Only in subsets<a class="headerlink" href="#only-in-subsets" title="Link to this heading">¶</a></h2>
+<p>Here you can decide whether you want to search through ‘all text’ – the
+whole book(s) – or just one of the subsets: ‘short suspensions’, ‘long
+suspensions’, ‘quotes’ and ‘non-quotes’ (see <a class="reference internal" href="../../cliccorpora/#the-clic-corpora"><span class="std std-ref">The CLiC corpora</span></a>).</p>
+</section>
+<section id="search-for-terms">
+<h2>Search for terms<a class="headerlink" href="#search-for-terms" title="Link to this heading">¶</a></h2>
+<p>This is the fundamental parameter of the concordance search – it lets
+you determine the node word or phrase that forms the basis of the
+concordance.</p>
+<p>The tokenisation from CLiC 2.0 onwards is based on unicode standard rules
+(i.e. Unicode word boundaries implemented with the <a class="reference internal" href="../../references/#icu" id="id2"><span>[ICU]</span></a> library), used
+both for queries and importing books.</p>
+<p>We consider a boundary mark to be a word-boundary if…</p>
+<ul class="simple">
+<li><p>The <a class="reference internal" href="../../references/#icu" id="id3"><span>[ICU]</span></a> library describes it as at the end of a word, e.g. <code class="docutils literal notranslate"><span class="pre">jump</span></code> or number, e.g. <code class="docutils literal notranslate"><span class="pre">32.3</span></code>.</p></li>
+<li><p>It is a single hyphen character surrounded by alpha-numeric characters.</p></li>
+<li><p>It is an apostrophe preceded with <code class="docutils literal notranslate"><span class="pre">s</span></code>, e.g. <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">days'</span> <span class="pre">work</span></code>.</p></li>
+<li><p>It is one of a whitelist of words preceded with an apostrophe, e.g. <code class="docutils literal notranslate"><span class="pre">'tis</span></code>.</p></li>
+</ul>
+<p>CLiC 2.0 and onwards supports <strong>wildcards</strong>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">*</span></code> means “zero or more characters”, for example:</p>
+<p>Placing * at the end of a the sequence <code class="docutils literal notranslate"><span class="pre">can</span></code> serves as a placeholder for
+any sequence of characters (or zero) and therefore retrieves all instances of
+words starting with this sequence, including <code class="docutils literal notranslate"><span class="pre">can</span></code>, <code class="docutils literal notranslate"><span class="pre">cannot</span></code> and <code class="docutils literal notranslate"><span class="pre">can't</span></code>
+(but also <code class="docutils literal notranslate"><span class="pre">candle</span></code>, <code class="docutils literal notranslate"><span class="pre">candles</span></code>, <code class="docutils literal notranslate"><span class="pre">candlestick</span></code> etc.)</p>
+<p><code class="docutils literal notranslate"><span class="pre">*</span></code> in <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">*</span> <span class="pre">hands</span></code> serves as a placeholder for any word token
+between <code class="docutils literal notranslate"><span class="pre">with</span></code> and <code class="docutils literal notranslate"><span class="pre">hands</span></code>, retrieving sequences like <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">her</span> <span class="pre">hands</span></code>,
+<code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">his</span> <span class="pre">hands</span></code>, <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">their</span> <span class="pre">hands</span></code>, <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">both</span> <span class="pre">hands</span></code>,
+<code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">clean</span> <span class="pre">hands</span></code> etc.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">?</span></code> means “one”</p></li>
+</ul>
+<p>The search will only retrieve valid tokens according to the rules above.
+This means that the search will ignore punctuation in your search query,
+and searching for a punctuation sign alone will not retrieve any results.
+If your research focuses on punctuation markers you can evade this issue
+by using the filter function in the subset tab: Go to the subset tab,
+select the relevant subset, for example non-quotes, and filter the rows
+to the punctuation marker of interest.</p>
+<p>Two hyphens separate words: for example, <em>Char–lotte</em> in Oliver
+Twist (OT.c6.p20) “Oliver’s gone mad! Char–lotte!” counts as two
+tokens.</p>
+<p>For the detailed technical documentation and more examples see <a class="reference internal" href="../../module/clic.tokenizer/#module-clic.tokenizer" title="clic.tokenizer"><code class="xref py py-mod docutils literal notranslate"><span class="pre">clic.tokenizer</span></code></a>.</p>
+</section>
+<section id="whole-phrase-or-any-word">
+<h2>‘Whole phrase’ or ‘Any word’<a class="headerlink" href="#whole-phrase-or-any-word" title="Link to this heading">¶</a></h2>
+<p>When you have entered several terms, you need to specify whether it is
+to be searched as one phrase (equivalent to using double quotes in a
+search engine, e.g. <em>dense fog</em>) or any of the words individually
+(<em>dense</em> and <em>fog</em>).</p>
+</section>
+<section id="co-text">
+<h2>Co-text<a class="headerlink" href="#co-text" title="Link to this heading">¶</a></h2>
+<p>The maximum number of words in the co-text is set at 10 on either side
+in a concordance (depending on the length of the words and the size of
+the screen you might see fewer). You can see the full chapter view by
+clicking on <strong>‘in bk.’ (in book) button</strong> at the end of any row (see
+<a class="reference internal" href="#figure-analysis-concordance-cotext-inbookbutton"><span class="std std-numref">Fig. 8</span></a> and <a class="reference internal" href="#figure-analysis-concordance-cotext-inbookchapter"><span class="std std-numref">Fig. 9</span></a>).</p>
+<figure class="align-default" id="id8">
+<span id="figure-analysis-concordance-cotext-inbookbutton"></span><img alt="../../_images/figure-analysis-concordance-cotext-inbookbutton.png" src="../../_images/figure-analysis-concordance-cotext-inbookbutton.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">The ‘in bk.’ (in book) button leads to the book view
+of the occurrence</span><a class="headerlink" href="#id8" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id9">
+<span id="figure-analysis-concordance-cotext-inbookchapter"></span><img alt="../../_images/figure-analysis-concordance-cotext-inbookchapter.png" src="../../_images/figure-analysis-concordance-cotext-inbookchapter.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">The ‘in bk.’ view shows the relevant section in the whole book.</span><a class="headerlink" href="#id9" title="Link to this image">¶</a></p>
+<div class="legend">
+<p>The preface shown here is a very short chapter. (Note that all authorial
+text occurring before the official first chapter, is counted as
+‘chapter 0’ in CLiC). This preface contains no quotes or suspensions;
+compare to the subset markup in the chapter view shown above.</p>
+</div>
+</figcaption>
+</figure>
+</section>
+<section id="results">
+<h2>Results<a class="headerlink" href="#results" title="Link to this heading">¶</a></h2>
+<p>These options allow you to adjust the way the concordance output is
+displayed.</p>
+<section id="filter-rows">
+<h3>Filter rows<a class="headerlink" href="#filter-rows" title="Link to this heading">¶</a></h3>
+<p>This filter option lets you filter the concordance output by the rows
+that contain a particular sequence of letters (both in the node and
+co-text). For example, searching for <code class="docutils literal notranslate"><span class="pre">hands</span></code> in <em>Oliver Twist</em> yields 124
+results; when we use the option <strong>‘filter rows’</strong> and search for
+<code class="docutils literal notranslate"><span class="pre">pockets</span></code>, this is filtered down to 8 results as illustrated in <a class="reference internal" href="#figure-analysis-concordance-results-filter"><span class="std std-numref">Fig. 10</span></a>.</p>
+<figure class="align-default" id="id10">
+<span id="figure-analysis-concordance-results-filter"></span><img alt="../../_images/figure-analysis-concordance-results-filter.png" src="../../_images/figure-analysis-concordance-results-filter.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Concordance of <code class="docutils literal notranslate"><span class="pre">hands</span></code> in <em>Oliver Twist</em> filtered down to
+<code class="docutils literal notranslate"><span class="pre">pockets</span></code> in the co-text</span><a class="headerlink" href="#id10" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>Note that the filter, when searching for character sequences does not
+necessarily search for complete words: for example, filtering a
+concordance of <code class="docutils literal notranslate"><span class="pre">head</span></code> in <em>Oliver Twist</em> for <code class="docutils literal notranslate"><span class="pre">eat</span></code> yields both
+occurrences of the verb <code class="docutils literal notranslate"><span class="pre">eat</span></code>, and the instance <code class="docutils literal notranslate"><span class="pre">threatened</span></code>, which
+contains the same sequence of letters (see <a class="reference internal" href="#figure-analysis-concordance-results-filtersequence"><span class="std std-numref">Fig. 11</span></a>).</p>
+<p>The filter function is cruder than the KWICGrouper; it can be usefully
+applied to filter down a large set of results before you do a more
+fine-grained categorisation. You might want to filter down the results
+to rows containing similar word forms. For example, filtering for <code class="docutils literal notranslate"><span class="pre">girl</span></code>
+will also retrieve rows containing <code class="docutils literal notranslate"><span class="pre">girlish</span></code> and <code class="docutils literal notranslate"><span class="pre">girls</span></code>. Moreover,
+unlike the main concordance search and the KWICGrouper, the filter lets
+you search for particular types of punctuation (e.g. round brackets used
+in suspensions).</p>
+<figure class="align-default" id="id11">
+<span id="figure-analysis-concordance-results-filtersequence"></span><img alt="../../_images/figure-analysis-concordance-results-filtersequence.png" src="../../_images/figure-analysis-concordance-results-filtersequence.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Filtering for the letter sequence <code class="docutils literal notranslate"><span class="pre">eat</span></code> returns forms of
+the verb <code class="docutils literal notranslate"><span class="pre">eat</span></code> and other words containing the sequence</span><a class="headerlink" href="#id11" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="view-as">
+<h3>View as<a class="headerlink" href="#view-as" title="Link to this heading">¶</a></h3>
+<p>From CLiC 2.0 onwards there are three options to view the concordance results:</p>
+<ol class="arabic simple">
+<li><p>Basic results: concordance lines + book short title; link to “in bk.” view</p></li>
+<li><p>Full metadata: concordance lines + book short title; chapter, paragraph &amp;
+sentence numbers; link to “in bk.” view</p></li>
+<li><p>Distribution plot: overview of matching lines per book</p></li>
+</ol>
+<p>The default view is 1. and 2. gives more information on the same view. View 3.
+is completely different: it does not show the text in concordance lines but plots
+the distribution of matching concordance lines across the searched books. Note that
+if a book in the searched corpus has zero matches it will not be shown in
+the distribution plot (hence, <a class="reference internal" href="#figure-distribution-plot-workhouse"><span class="std std-numref">Fig. 12</span></a> only shows
+10 out of the 15 books in the DNov corpus).</p>
+<figure class="align-default" id="id12">
+<span id="figure-distribution-plot-workhouse"></span><img alt="../../_images/figure_distribution_plot_workhouse.png" src="../../_images/figure_distribution_plot_workhouse.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Distribution plot of <cite>workhouse</cite> in DNov</span><a class="headerlink" href="#id12" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>Like the concordance view, the distribution plot view can show
+“KWICGrouped lines” i.e. lines that contain particular patterns in the
+proximity of the nodes (see the <a class="reference internal" href="../subsets/#kwicgrouper"><span class="std std-ref">KWICGrouper</span></a> section below for a
+detailed example). Once the KWICGrouper is activated by selecting word
+types in KWICGrouper box in the menu bar, the corresponding instances
+in the distribution plot are coloured.
+<a class="reference internal" href="#figure-distribution-plot-workhouse-kwicgroup"><span class="std std-numref">Fig. 13</span></a> shows coloured
+lines containing references to children (<cite>boy</cite>, <cite>chance-child</cite>,
+<cite>charity-boy</cite>, <cite>child</cite>, <cite>children</cite>, <cite>girl</cite> and <cite>orphan</cite>). Light green
+represents one match in the concordance line, a darker green two and
+purple three matches. (Not displayed here: a line with four matches
+would be shown in pink.)</p>
+<figure class="align-default" id="id13">
+<span id="figure-distribution-plot-workhouse-kwicgroup"></span><img alt="../../_images/figure_distribution_plot_workhouse_KWICGroup.png" src="../../_images/figure_distribution_plot_workhouse_KWICGroup.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Distribution plot of <cite>workhouse</cite> in DNov, KWICGrouped for references to children</span><a class="headerlink" href="#id13" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="basic-sorting">
+<h3>Basic sorting<a class="headerlink" href="#basic-sorting" title="Link to this heading">¶</a></h3>
+<p>The concordance lines can be sorted by any of the columns in the
+concordance by clicking on the header, which will then be marked with
+dark arrows. For example, by clicking on <strong>‘Left’</strong> the lines will be
+sorted by the first word to the left of the node and by clicking on
+<strong>‘Right’</strong> by the first word on the right. If you have the metadata
+columns activated you can also sort by these, for example to sort all
+entries by chapter. Similarly, if you have created your own tags (see
+the section <a class="reference internal" href="../subsets/#manage-tag-columns"><span class="std std-ref">Manage tag columns</span></a> below), you can sort for lines with a
+particular tag. Clicking on the same header a second time will reverse
+the order of sorting.</p>
+<p>Note that you can create a <strong>“sorting sequence”</strong> by clicking on various
+headers while pressing the <strong>shift key</strong>. For example, you could sort a
+concordance first by the words on the right and then by book, as
+illustrated in <a class="reference internal" href="#figure-analysis-concordance-sorting-fireplacecombined"><span class="std std-numref">Fig. 14</span></a>,
+which shows a concordance of <em>fireplace</em> sorted first by book – so that
+results from <em>Barnaby Rudge (BR)</em> come first – and then ordered by the
+co-text on the right.</p>
+<figure class="align-default" id="id14">
+<span id="figure-analysis-concordance-sorting-fireplacecombined"></span><img alt="../../_images/figure-analysis-concordance-sorting-fireplacecombined.png" src="../../_images/figure-analysis-concordance-sorting-fireplacecombined.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Concordance of fireplace in DNov (Dickens’s Novels) –
+first ordered by book, then by the first word on the right</span><a class="headerlink" href="#id14" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="kwicgrouper">
+<span id="id4"></span><h3>KWICGrouper<a class="headerlink" href="#kwicgrouper" title="Link to this heading">¶</a></h3>
+<p>The KWICGrouper is a tool that allows you to quickly group the
+concordance lines according to patterns that you find as you go through
+the concordance. For a basic introduction to the KWICGrouper
+functionality (in the CLiC 1.5 interface) you can watch our KWICGrouper
+video tutorial from May 2017 <a class="reference internal" href="../../references/#clic-kwicgrouper-video" id="id5"><span>[CLiC_KWICGrouper_video]</span></a>.</p>
+<p>The idea of the KWICGrouper is that you look for patterns as you search
+for particular words. Any matching lines will be highlighted and moved
+to the top of the screen. Among the matching lines we further
+distinguish between the lines based on how many matches they contain. A
+line with one match is highlighted in light green, lines with two
+matches are coloured in a darker green, those with three in purple and,
+finally, those with four in pink. (For lines with more matches than
+these, the colours will repeat.) The KWICGrouper gives you two options:</p>
+<ul class="simple">
+<li><p><strong>‘Search in span’:</strong> Set the span for the KWICGrouper search. By
+dragging the slider you can adjust the number of words that will be
+searched to the left and right of the search term. The maximum (and
+default) span is 5 positions to either side.</p></li>
+<li><p><strong>‘Search for types’:</strong> Choose one or more words to search for in the
+span. This is currently limited to single words, but there is no
+limit on how many words you add.</p></li>
+</ul>
+<p>The total number of matching rows will be displayed at the top; the
+process is illustrated in <a class="reference internal" href="#figure-analysis-concordance-kwicgrouper-fireplain"><span class="std std-numref">Fig. 15</span></a>
+and <a class="reference internal" href="#figure-analysis-concordance-kwicgrouper-firetypes"><span class="std std-numref">Fig. 16</span></a>, which
+show 1. the plain concordance lines as returned when searching for
+<em>fire</em> in Dickens’s novels and 2. the process of choosing types (forms
+of words) from co-text surrounding <em>fire</em> in the concordance in order
+to group the concordance lines.</p>
+<figure class="align-default" id="id15">
+<span id="figure-analysis-concordance-kwicgrouper-fireplain"></span><img alt="../../_images/figure-analysis-concordance-kwicgrouper-fireplain.png" src="../../_images/figure-analysis-concordance-kwicgrouper-fireplain.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">The first concordance lines of fire in DNov (Dickens’s
+Novels) with the default sorting by ‘in bk’</span><a class="headerlink" href="#id15" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id16">
+<span id="figure-analysis-concordance-kwicgrouper-firetypes"></span><img alt="../../_images/figure-analysis-concordance-kwicgrouper-firetypes.png" src="../../_images/figure-analysis-concordance-kwicgrouper-firetypes.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Selecting types related to sitting from the KWICGrouper
+to group the concordance lines</span><a class="headerlink" href="#id16" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>The dropdown only contains those word forms that actually appear
+around the node term in the specified search span. Therefore, while
+<em>sitiwation</em> is listed here, it wouldn’t be listed if we had searched
+for another node term or used other books; it only appears once in this
+set in the following example context:</p>
+<blockquote>
+<div><p>I don’t take no pride out on it, Sammy,’ replied Mr. Weller, poking
+the fire vehemently, ‘it’s a horrid <strong>sitiwation</strong>. I’m actiwally
+drove out o’ house and home by it.The breath was scarcely out o’ your
+poor mother-in-law’s body, ven vun old ‘ooman sends me a pot o’ jam,
+and another a pot o’ jelly, and another brews a blessed large jug o’
+camomile-tea, vich she brings in vith her own hands.’</p>
+<p><em>[Pickwick Papers, Chapter LI.]</em></p>
+</div></blockquote>
+<figure class="align-default" id="id17">
+<span id="figure-analysis-concordance-kwicgrouper-fireresults"></span><img alt="../../_images/figure-analysis-concordance-kwicgrouper-fireresults.png" src="../../_images/figure-analysis-concordance-kwicgrouper-fireresults.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">The resulting ‘KWICGrouped’ concordance lines: the
+selected types are listed in the search box on the right; and in the
+case of this example it is suitable to restrict the search span to
+only the left side of the node</span><a class="headerlink" href="#id17" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>The KWICGrouper only searches through a number of words to the left and
+right of the node term, as specified by the search span.
+<a class="reference internal" href="#figure-analysis-concordance-kwicgrouper-fireresults"><span class="std std-numref">Fig. 17</span></a> shows
+the resulting concordance lines according to the KWICGrouper settings
+after manually choosing types related to the action of sitting. Apart
+from the selected search types the search span has also been restricted
+to the left side so that clearer patterns of sitting by the fire become
+visible.</p>
+<figure class="align-default" id="id18">
+<span id="figure-analysis-concordance-kwicgrouper-fireback"></span><img alt="../../_images/figure-analysis-concordance-kwicgrouper-fireback.png" src="../../_images/figure-analysis-concordance-kwicgrouper-fireback.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">The first lines of fire co-occurring with back (i.e. one
+KWICGrouper match) are highlighted and moved to the top</span><a class="headerlink" href="#id18" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>Apart from looking for characters sitting by the fire, it might also be
+of interest to look for characters standing by the fire. We have shown
+in our previous work (see Chapter 6 of <a class="reference internal" href="../../references/#mahlberg-2013" id="id6"><span>[Mahlberg_2013]</span></a>) that the cluster
+<em>with his back to the fire</em> is prominent in Dickens’s and 19th century
+novels by other writers.
+<a class="reference internal" href="#figure-analysis-concordance-kwicgrouper-fireback"><span class="std std-numref">Fig. 18</span></a> shows the
+first concordance lines of <em>fire</em> with <em>back</em> on the left (sorted to the
+left).</p>
+<p>The output from the KWICGrouper lists at the top of the screen the
+number of lines that contain any number of matches. In this case
+there are only lines with one match, but no lines with more than one
+match. The message “36 entries with 1 KWIC match” means that 36 lines
+contain both <em>fire</em> and <em>back</em>. This function becomes useful when we now
+look for gendered pronouns. As shown in
+<a class="reference internal" href="#figure-analysis-concordance-kwicgrouper-firebackhis"><span class="std std-numref">Fig. 19</span></a>, there
+are 27 lines in which <em>fire</em> co-occurs with both <em>back</em> and <em>his</em>. Most
+of these occurrences appear in the pattern <em>with his back to the fire</em>,
+as becomes obvious when we reverse the sorting on the left so that
+<em>his</em> occurs at the top in the first position to the left of <em>fire</em> – the L1
+position. On the other hand, as we can see from
+<a class="reference internal" href="#figure-analysis-concordance-kwicgrouper-firebackher"><span class="std std-numref">Fig. 20</span></a>,
+Dickens’s novels contain only one instance of <em>fire</em> co-occurring with
+<em>back</em> and <em>her</em> (with <em>her back to the fire</em>).</p>
+<figure class="align-default" id="id19">
+<span id="figure-analysis-concordance-kwicgrouper-firebackhis"></span><img alt="../../_images/figure-analysis-concordance-kwicgrouper-firebackhis.png" src="../../_images/figure-analysis-concordance-kwicgrouper-firebackhis.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">The 27 lines with two matches (here, back and his) are
+highlighted in a darker green</span><a class="headerlink" href="#id19" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id20">
+<span id="figure-analysis-concordance-kwicgrouper-firebackher"></span><img alt="../../_images/figure-analysis-concordance-kwicgrouper-firebackher.png" src="../../_images/figure-analysis-concordance-kwicgrouper-firebackher.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Only one line contains both back and her; it is
+highlighted and shown above single match lines</span><a class="headerlink" href="#id20" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="manage-tag-columns">
+<span id="id7"></span><h3>Manage tag columns<a class="headerlink" href="#manage-tag-columns" title="Link to this heading">¶</a></h3>
+<p>Once you have identified lines with patterns of interest, you might want
+to place these into one or more categories. CLiC provides a flexible
+tagging system for this.
+<a class="reference internal" href="#figure-analysis-concordance-tagcolumns-dream"><span class="std std-numref">Fig. 21</span></a> illustrates
+what a tagged concordance can look like. The tags are
+user-defined so you can create tags that are relevant to your project.
+In this case, occurrences of <em>dream</em> in <em>Oliver Twist</em> have been tagged
+according to who is dreaming.</p>
+<figure class="align-default" id="id21">
+<span id="figure-analysis-concordance-tagcolumns-dream"></span><img alt="../../_images/figure-analysis-concordance-tagcolumns-dream.png" src="../../_images/figure-analysis-concordance-tagcolumns-dream.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Tagged concordance lines of dream in Oliver Twist</span><a class="headerlink" href="#id21" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>In order to tag the lines, click on <strong>‘manage tag columns’</strong> (shown in
+the bottom right corner of <a class="reference internal" href="#figure-analysis-concordance-tagcolumns-dream"><span class="std std-numref">Fig. 21</span></a>) and create
+your own tag(s) through the <strong>‘Add new’</strong> option (see
+<a class="reference internal" href="#figure-analysis-concordance-tagcolumns-menu"><span class="std std-numref">Fig. 22</span></a>). You can
+rename a tag by selecting it from the <strong>‘Tag columns’</strong> list and
+renaming it in the text box. Once you have created your tag(s), you can
+click <strong>‘Back’</strong> to return to the menu. Now you can select the relevant
+concordance lines by clicking on them and you will see that the sidebar
+contains the list of your tags. Once one or more lines are selected you
+can click the tick next to the relevant tag in order to tag the line
+(see <a class="reference internal" href="#figure-analysis-concordance-tagcolumns-selectline"><span class="std std-numref">Fig. 23</span></a>).
+An extra column will appear for each tag and you can sort on these
+columns as mentioned in the <a class="reference internal" href="#basic-sorting"><span class="std std-ref">Basic sorting</span></a> section above. Selected and tagged
+rows will be automatically deselected when you click on (i.e. select) a
+new row.</p>
+<figure class="align-default" id="id22">
+<span id="figure-analysis-concordance-tagcolumns-menu"></span><img alt="../../_images/figure-analysis-concordance-tagcolumns-menu.png" src="../../_images/figure-analysis-concordance-tagcolumns-menu.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">The menu for adding and renaming tags</span><a class="headerlink" href="#id22" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id23">
+<span id="figure-analysis-concordance-tagcolumns-selectline"></span><img alt="../../_images/figure-analysis-concordance-tagcolumns-selectline.png" src="../../_images/figure-analysis-concordance-tagcolumns-selectline.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">Select a line (by clicking on it) in order to apply an
+existing tag; once tagged, the tick in the sidebar will appear green
+for the selected line.
+A tick will also be added to the tag column in
+the concordance itself.</span><a class="headerlink" href="#id23" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../">CLiC User Guide</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../search/" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/">Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">The CLiC corpora</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../cliccorpora/">The CLiC corpora</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Analysis tabs</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Concordance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../flexiconc/">FlexiConc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subsets/">Subsets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../clusters/">Clusters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../keywords/">Keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../counts/">Counts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../texts/">Texts</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced topics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/api_usage/">CLiC API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/adding_corpora/">Uploading new texts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/development/">Developing the system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/production/">Managing a production instance of CLiC</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../known-issues/">List of known issues</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../appendices/">Appendices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../whatsnew/">What’s new</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../references/">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../image_sources/">Cover Image Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../policies/">Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary/">Glossary of terms used</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../">Documentation overview</a><ul>
+      <li>Previous: <a href="../../cliccorpora/" title="previous chapter">The CLiC corpora</a></li>
+      <li>Next: <a href="../flexiconc/" title="next chapter">FlexiConc</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Michaela Mahlberg, Viola Wiegand, Jamie Lentin & Anthony Hennessey.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.0.2</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../../_sources/clicanalysis/concordance.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

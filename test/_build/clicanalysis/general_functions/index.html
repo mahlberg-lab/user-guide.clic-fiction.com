@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>General functions &#8212; CLiC User Guide v2.3.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css?v=c058f7c8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=27fed22d" />
+    <script src="../../_static/documentation_options.js?v=9a23c445"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="general-functions">
+<h1>General functions<a class="headerlink" href="#general-functions" title="Link to this heading">¶</a></h1>
+<p>The landing page shows a rotating summary of the CLiC corpora. Click
+onto one of the tabs in the control bar on the right side to start your analysis. The CLiC
+logo will take you back to the landing page.</p>
+<p>The CLiC functions can be divided into two groups:</p>
+<ul class="simple">
+<li><p><strong>A:</strong> The <strong>‘Concordance’</strong> and <strong>‘Subsets’</strong> tabs both display text
+(patterns) from the selected books in context. This is where you can
+analyse the use of particular words and phrases.</p></li>
+<li><p><strong>B:</strong> The <strong>‘Clusters’</strong> and <strong>‘Keywords’</strong> tabs both show lists of
+frequent patterns (without context), but they differ in their
+applications. The Clusters tab lists frequent words and word sequences (‘clusters’)
+in a single corpus (or several corpora if you have selected more than one). In the
+Keywords tab, you can compare the frequency of words and clusters in one corpus with
+another; CLiC will provide a list of those items that are significantly “overused”
+in the first corpus (for more information, see the <a class="reference internal" href="../keywords/#keywords"><span class="std std-ref">Keywords</span></a> section).</p></li>
+</ul>
+<p class="rubric" id="functions-common-to-all-tabs">Functions common to all tabs</p>
+<p>At any point, you can close the menu on the right by clicking on the
+menu icon in the top right corner (see <code class="xref std std-numref docutils literal notranslate"><span class="pre">figure-landing-page-2_0_0_19C_menu</span></code>).</p>
+<figure class="align-default" id="id1">
+<span id="figure-landing-page-2-0-0-19c-menu"></span><img alt="../../_images/figure-landing-page-2_0_0_19C_menu.png" src="../../_images/figure-landing-page-2_0_0_19C_menu.png" />
+<figcaption>
+<p><span class="caption-text">Close the sidebar menu by clicking on the menu icon in
+the top right corner</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p class="rubric" id="saving-plain-and-annotated-results">Saving plain and annotated results</p>
+<p>The buttons in the top row apply to all analysis tabs:</p>
+<ul class="simple">
+<li><p><strong>‘Load’:</strong> You can upload a previously exported CLiC CSV file to
+restore your settings and your tag annotation (see the <a class="reference internal" href="../subsets/#manage-tag-columns"><span class="std std-ref">Manage tag columns</span></a>
+subsection of the Concordance documentation). The CSV file can only be reimported to CLiC if you
+haven’t made any changes to it. We would therefore recommend keeping
+the original copy for potentially loading it back into CLiC (as well
+as for your personal record) and saving any manual changes (e.g.
+comments, highlights, filtered lines) in a separate version. Also
+note that the ‘Load’ function will replace any existing tags in CLiC
+with those from the file; unlike ‘Merge’, see below.</p></li>
+<li><p><strong>‘Merge’:</strong> The ‘Merge’ function will add the tags from the CSV file
+to any pre-existing tags. You can also use this function when you
+have more than one CSV (for example with annotations from several
+researchers) so you can merge these in order to check to what extent
+the tag sets overlap or differ.</p></li>
+<li><p><strong>‘Save’:</strong> Save your results, settings and annotated tags in a CSV
+file that can be opened in a spreadsheet viewer. The file contains a
+(shareable) link that will replicate your search settings.</p></li>
+<li><p><strong>‘Clear’:</strong> Resets the search settings and any tag columns.
+(Identical to clicking the CLiC icon.)</p></li>
+</ul>
+<p>For both <strong>‘Load’</strong> and <strong>‘Merge’</strong> the results/queries have to be
+compatible, i.e. they have to be based on the same node word.</p>
+<p class="rubric" id="printing-the-results">Printing the results</p>
+<p>If you have already saved the results in a CSV file, you may want to
+print that file directly from your spreadsheet viewer. However, the CSV
+file will not preserve any of the colours or the highlighting that you
+may have created with the <strong>KWICGrouper</strong> function (see the <a class="reference internal" href="../subsets/#kwicgrouper"><span class="std std-ref">KWICGrouper</span></a> subsection
+of the Concordance documentation). In order to print the output
+in colour, go to the Chrome printing menu, click on ‘More settings’ and
+tick ‘Background graphics’ (see <code class="xref std std-numref docutils literal notranslate"><span class="pre">figure-analysis-common-printing-settings</span></code>; other browsers
+should have similar settings). The layout also tends to print best in
+landscape format. You can then “print” the output to a PDF file or straight to
+your printer.</p>
+<figure class="align-default" id="id2">
+<span id="figure-analysis-common-printing-settings"></span><img alt="../../_images/figure-analysis-common-printing-settings.png" src="../../_images/figure-analysis-common-printing-settings.png" />
+<figcaption>
+<p><span class="caption-text">Settings for printing CLiC output in colour using the
+Chrome print menu</span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../">CLiC User Guide</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../search/" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/">Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">The CLiC corpora</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../cliccorpora/">The CLiC corpora</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Analysis tabs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../concordance/">Concordance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../flexiconc/">FlexiConc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subsets/">Subsets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../clusters/">Clusters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../keywords/">Keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../counts/">Counts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../texts/">Texts</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced topics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/api_usage/">CLiC API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/adding_corpora/">Uploading new texts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/development/">Developing the system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/production/">Managing a production instance of CLiC</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../known-issues/">List of known issues</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../appendices/">Appendices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../whatsnew/">What’s new</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../references/">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../image_sources/">Cover Image Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../policies/">Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary/">Glossary of terms used</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Michaela Mahlberg, Viola Wiegand, Jamie Lentin & Anthony Hennessey.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.0.2</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../../_sources/clicanalysis/general_functions.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

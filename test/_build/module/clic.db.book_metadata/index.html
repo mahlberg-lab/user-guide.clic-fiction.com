@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>clic.db.book_metadata: Fetch additional book information &#8212; CLiC User Guide v2.3.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css?v=c058f7c8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=27fed22d" />
+    <script src="../../_static/documentation_options.js?v=9a23c445"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="clic-db-book-metadata-fetch-additional-book-information">
+<span id="module-clic.db.book_metadata"></span><h1>clic.db.book_metadata: Fetch additional book information<a class="headerlink" href="#clic-db-book-metadata-fetch-additional-book-information" title="Link to this heading">¶</a></h1>
+<section id="get-book-metadata">
+<h2>get_book_metadata<a class="headerlink" href="#get-book-metadata" title="Link to this heading">¶</a></h2>
+<p>For each query type that supports it, a <code class="docutils literal notranslate"><span class="pre">metadata</span></code> option can be provided to
+add extra information about each book mentioned in the query.</p>
+<p>These are the books we use for the below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">db_cur</span> <span class="o">=</span> <span class="n">test_database</span><span class="p">(</span>
+<span class="gp">... </span><span class="n">alice</span><span class="o">=</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="gp">... </span><span class="s1">Alice’s Adventures in Wonderland</span>
+<span class="gp">... </span><span class="s1">Lewis Carroll</span>
+<span class="gp">...</span>
+<span class="gp">... </span><span class="s1">CHAPTER I. Down the Rabbit-Hole</span>
+<span class="gp">...</span>
+<span class="gp">... </span><span class="s1">‘Well!’ thought Alice to herself, ‘after such a fall as this, I shall</span>
+<span class="gp">... </span><span class="s1">think nothing of tumbling down stairs! How brave they’ll all think me at</span>
+<span class="gp">... </span><span class="s1">home! Why, I wouldn’t say anything about it, even if I fell off the top</span>
+<span class="gp">... </span><span class="s1">of the house!’ (Which was very likely true.)</span>
+<span class="gp">...</span>
+<span class="gp">... </span><span class="s1">‘I beg your pardon,’ said Alice very humbly: ‘you had got to the fifth</span>
+<span class="gp">... </span><span class="s1">bend, I think?’</span>
+<span class="gp">...</span>
+<span class="gp">... </span><span class="s1">CHAPTER II. The Pool of Tears</span>
+<span class="gp">...</span>
+<span class="gp">... </span><span class="s1">‘I had NOT!’ cried the Mouse, sharply and very angrily.</span>
+<span class="gp">... </span><span class="s1">&#39;&#39;&#39;</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
+<span class="gp">...</span>
+<span class="gp">... </span><span class="n">willows</span><span class="o">=</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="gp">... </span><span class="s1">The Wind in the Willows</span>
+<span class="gp">... </span><span class="s1">Kenneth Grahame</span>
+<span class="gp">...</span>
+<span class="gp">... </span><span class="s1">CHAPTER I. THE RIVER BANK</span>
+<span class="gp">...</span>
+<span class="gp">... </span><span class="s1">‘Hold up!’ said an elderly rabbit at the gap. ‘Sixpence for the</span>
+<span class="gp">... </span><span class="s1">privilege of passing by the private road!’</span>
+<span class="gp">...</span>
+<span class="gp">... </span><span class="s1">CHAPTER IV. MR. BADGER</span>
+<span class="gp">...</span>
+<span class="gp">... </span><span class="s1">‘Thought I should find you here all right,’ said the Otter cheerfully.</span>
+<span class="gp">... </span><span class="s1">‘They were all in a great state of alarm along River Bank when I arrived</span>
+<span class="gp">... </span><span class="s1">this morning.’</span>
+<span class="gp">... </span><span class="s1">&#39;&#39;&#39;</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>We will use concordance for these examples, but the choice shouldn’t matter:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">..concordance</span> <span class="kn">import</span> <span class="n">concordance</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">..subset</span> <span class="kn">import</span> <span class="n">subset</span>
+</pre></div>
+</div>
+<section id="book-titles">
+<h3>book_titles<a class="headerlink" href="#book-titles" title="Link to this heading">¶</a></h3>
+<p>Return title/author for each book:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">just_metadata</span><span class="p">(</span><span class="n">concordance</span><span class="p">(</span><span class="n">db_cur</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;alice&#39;</span><span class="p">,</span> <span class="s1">&#39;willows&#39;</span><span class="p">],</span> <span class="n">q</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;the&quot;</span><span class="p">],</span> <span class="n">metadata</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;book_titles&#39;</span><span class="p">]))</span>
+<span class="go">{&#39;book_titles&#39;:</span>
+<span class="go">  {&#39;alice&#39;: [&#39;Alice’s Adventures in Wonderland&#39;, &#39;Lewis Carroll&#39;],</span>
+<span class="go">   &#39;willows&#39;: [&#39;The Wind in the Willows&#39;, &#39;Kenneth Grahame&#39;]}}</span>
+</pre></div>
+</div>
+</section>
+<section id="chapter-start">
+<h3>chapter_start<a class="headerlink" href="#chapter-start" title="Link to this heading">¶</a></h3>
+<p>Return the position of the start of each chapter, and “_end” (of the book):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">just_metadata</span><span class="p">(</span><span class="n">concordance</span><span class="p">(</span><span class="n">db_cur</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;alice&#39;</span><span class="p">,</span> <span class="s1">&#39;willows&#39;</span><span class="p">],</span> <span class="n">q</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;the&quot;</span><span class="p">],</span> <span class="n">metadata</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;chapter_start&#39;</span><span class="p">]))</span>
+<span class="go">{&#39;chapter_start&#39;:</span>
+<span class="go">  {&#39;alice&#39;: {1: 81, 2: 461, &#39;_end&#39;: 516},</span>
+<span class="go">   &#39;willows&#39;: {1: 68, 2: 200, &#39;_end&#39;: 358}}}</span>
+</pre></div>
+</div>
+</section>
+<section id="word-count-chapter">
+<h3>word_count_chapter<a class="headerlink" href="#word-count-chapter" title="Link to this heading">¶</a></h3>
+<p>Return the word count before the start of each chapter, and at the end of book with “_end”:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">just_metadata</span><span class="p">(</span><span class="n">concordance</span><span class="p">(</span><span class="n">db_cur</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;alice&#39;</span><span class="p">,</span> <span class="s1">&#39;willows&#39;</span><span class="p">],</span> <span class="n">q</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;the&quot;</span><span class="p">],</span> <span class="n">metadata</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;word_count_chapter&#39;</span><span class="p">]))</span>
+<span class="go">{&#39;word_count_chapter&#39;:</span>
+<span class="go">  {&#39;alice&#39;: {1: 0, 2: 66, &#39;_end&#39;: 76},</span>
+<span class="go">  &#39;willows&#39;: {1: 0, 2: 19, &#39;_end&#39;: 48}}}</span>
+</pre></div>
+</div>
+</section>
+<section id="word-count-quote">
+<h3>word_count_quote<a class="headerlink" href="#word-count-quote" title="Link to this heading">¶</a></h3>
+<p>Return the word count in quotes (or any other subset):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">just_metadata</span><span class="p">(</span><span class="n">concordance</span><span class="p">(</span><span class="n">db_cur</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;alice&#39;</span><span class="p">,</span> <span class="s1">&#39;willows&#39;</span><span class="p">],</span> <span class="n">q</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;the&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">metadata</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;word_count_quote&#39;</span><span class="p">,</span> <span class="s1">&#39;word_count_nonquote&#39;</span><span class="p">]))</span>
+<span class="go">{&#39;word_count_nonquote&#39;: {&#39;alice&#39;: 20, &#39;willows&#39;: 11},</span>
+<span class="go"> &#39;word_count_quote&#39;: {&#39;alice&#39;: 56, &#39;willows&#39;: 37}}</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<dl class="py function">
+<dt class="sig sig-object py" id="clic.db.book_metadata.get_book_metadata">
+<span class="sig-prename descclassname"><span class="pre">clic.db.book_metadata.</span></span><span class="sig-name descname"><span class="pre">get_book_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cur</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">book_ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#clic.db.book_metadata.get_book_metadata" title="Link to this definition">¶</a></dt>
+<dd><p>Generate dict of metadata that should go in footer of both concordance and subsets</p>
+<ul class="simple">
+<li><p>book_ids: Array of book IDs to include</p></li>
+<li><p>metadata: Metadata items to include, a set contining some of…
+- ‘book_titles’: The title / author of each book
+- ‘chapter_start’: The start character for all chapters, and end of book
+- ‘word_count_(subset)’: Count of words within (subset)</p></li>
+</ul>
+</dd></dl>
+
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../">CLiC User Guide</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../search/" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/">Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">The CLiC corpora</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../cliccorpora/">The CLiC corpora</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Analysis tabs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../clicanalysis/concordance/">Concordance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../clicanalysis/flexiconc/">FlexiConc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../clicanalysis/subsets/">Subsets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../clicanalysis/clusters/">Clusters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../clicanalysis/keywords/">Keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../clicanalysis/counts/">Counts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../clicanalysis/texts/">Texts</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced topics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/api_usage/">CLiC API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/adding_corpora/">Uploading new texts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/development/">Developing the system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/production/">Managing a production instance of CLiC</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../known-issues/">List of known issues</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../appendices/">Appendices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../whatsnew/">What’s new</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../references/">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../image_sources/">Cover Image Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../policies/">Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary/">Glossary of terms used</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Michaela Mahlberg, Viola Wiegand, Jamie Lentin & Anthony Hennessey.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.0.2</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../../_sources/module/clic.db.book_metadata.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
