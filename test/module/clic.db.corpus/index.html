@@ -35,13 +35,25 @@
 <span id="module-clic.db.corpus"></span><h1>clic.db.corpora: Get/put corpora dicts to DB<a class="headerlink" href="#clic-db-corpora-get-put-corpora-dicts-to-db" title="Link to this heading">¶</a></h1>
 </section>
 <dl class="py function">
+<dt class="sig sig-object py" id="clic.db.corpus.add_book_to_corpus">
+<span class="sig-prename descclassname"><span class="pre">clic.db.corpus.</span></span><span class="sig-name descname"><span class="pre">add_book_to_corpus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cur</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">corpus</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">book</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#clic.db.corpus.add_book_to_corpus" title="Link to this definition">¶</a></dt>
+<dd><p>Add a book to a corpus (i.e. a set of books) in the database.</p>
+<p>A corpus object is a dict containing
+- name: Short name of corpus</p>
+<p>A book object is a dict containing
+- name: The shortname of the book</p>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="clic.db.corpus.put_corpus">
 <span class="sig-prename descclassname"><span class="pre">clic.db.corpus.</span></span><span class="sig-name descname"><span class="pre">put_corpus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cur</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">corpus</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#clic.db.corpus.put_corpus" title="Link to this definition">¶</a></dt>
 <dd><p>Add a corpus (i.e. a set of books) object to the database.</p>
 <p>A corpus object is a dict containing
 - name: Short name of corpus
 - title: Visible title of corpus
-- contents: List of book names this corpus contains</p>
+- carousel_image_path: Filename to use for carousel image
+- ordering: Ordering of corpus entries in DB
+- example_url: An example CLiC URL to use in the carousel. Hostname will be stripped</p>
 </dd></dl>
 
 
