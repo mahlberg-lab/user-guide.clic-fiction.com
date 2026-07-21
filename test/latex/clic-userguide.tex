@@ -1814,16 +1814,16 @@ German 19th Century Reference Corpus
 \subsection{Python 3}
 \label{\detokenize{advanced/api_usage:python-3}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{k+kn}{import} \PYG{n+nn}{json}
-\PYG{k+kn}{from} \PYG{n+nn}{operator} \PYG{k+kn}{import} \PYG{n}{itemgetter}
-\PYG{k+kn}{from} \PYG{n+nn}{collections} \PYG{k+kn}{import} \PYG{n}{OrderedDict}
-\PYG{k+kn}{import} \PYG{n+nn}{requests}
-\PYG{k+kn}{import} \PYG{n+nn}{pandas} \PYG{k}{as} \PYG{n+nn}{pd}
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{json}
+\PYG{k+kn}{from}\PYG{+w}{ }\PYG{n+nn}{operator}\PYG{+w}{ }\PYG{k+kn}{import} \PYG{n}{itemgetter}
+\PYG{k+kn}{from}\PYG{+w}{ }\PYG{n+nn}{collections}\PYG{+w}{ }\PYG{k+kn}{import} \PYG{n}{OrderedDict}
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{requests}
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{pandas}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{n+nn}{pd}
 
 \PYG{n}{UA} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{CLiC API Example Python3 Code}\PYG{l+s+s2}{\PYGZdq{}}  \PYG{c+c1}{\PYGZsh{} user agent !! CHANGE ME !!}
 \PYG{n}{HOSTNAME} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{clic\PYGZhy{}fiction.com}\PYG{l+s+s2}{\PYGZdq{}}
 
-\PYG{k}{def} \PYG{n+nf}{api\PYGZus{}request}\PYG{p}{(}\PYG{n}{endpoint}\PYG{p}{,} \PYG{n}{query}\PYG{o}{=}\PYG{k+kc}{None}\PYG{p}{)}\PYG{p}{:}
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{api\PYGZus{}request}\PYG{p}{(}\PYG{n}{endpoint}\PYG{p}{,} \PYG{n}{query}\PYG{o}{=}\PYG{k+kc}{None}\PYG{p}{)}\PYG{p}{:}
 \PYG{+w}{    }\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
 \PYG{l+s+sd}{    Makes the API requests.}
 \PYG{l+s+sd}{    Returns the endpoint specific data structure as a python structure.}
@@ -1848,7 +1848,7 @@ German 19th Century Reference Corpus
         \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{API returned info: }\PYG{l+s+s2}{\PYGZdq{}} \PYG{o}{+} \PYG{n}{rv}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{info}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{message}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{)}
     \PYG{k}{return} \PYG{n}{rv}
 
-\PYG{k}{def} \PYG{n+nf}{get\PYGZus{}lookup}\PYG{p}{(}\PYG{p}{)}\PYG{p}{:}
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{get\PYGZus{}lookup}\PYG{p}{(}\PYG{p}{)}\PYG{p}{:}
 \PYG{+w}{    }\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
 \PYG{l+s+sd}{    Returns a pandas DataFrame listing the texts for each of the available corpora.}
 \PYG{l+s+sd}{    \PYGZdq{}\PYGZdq{}\PYGZdq{}}
@@ -1864,7 +1864,7 @@ German 19th Century Reference Corpus
     \PYG{n}{df}\PYG{o}{.}\PYG{n}{reset\PYGZus{}index}\PYG{p}{(}\PYG{n}{inplace}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{,} \PYG{n}{drop}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{)}
     \PYG{k}{return} \PYG{n}{df}
 
-\PYG{k}{def} \PYG{n+nf}{get\PYGZus{}tokens}\PYG{p}{(}\PYG{n}{shortname}\PYG{p}{,} \PYG{n}{subset}\PYG{o}{=}\PYG{k+kc}{None}\PYG{p}{,} \PYG{n}{lowercase}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{,} \PYG{n}{punctuation}\PYG{o}{=}\PYG{k+kc}{False}\PYG{p}{)}\PYG{p}{:}
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{get\PYGZus{}tokens}\PYG{p}{(}\PYG{n}{shortname}\PYG{p}{,} \PYG{n}{subset}\PYG{o}{=}\PYG{k+kc}{None}\PYG{p}{,} \PYG{n}{lowercase}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{,} \PYG{n}{punctuation}\PYG{o}{=}\PYG{k+kc}{False}\PYG{p}{)}\PYG{p}{:}
 \PYG{+w}{    }\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
 \PYG{l+s+sd}{    Fetches tokens using the \PYGZsq{}subset\PYGZsq{} endpoint.}
 \PYG{l+s+sd}{    Returns a list of tokens.}
@@ -1891,7 +1891,7 @@ German 19th Century Reference Corpus
         \PYG{k}{return} \PYG{p}{[}\PYG{n}{i}\PYG{o}{.}\PYG{n}{lower}\PYG{p}{(}\PYG{p}{)} \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n}{tokens}\PYG{p}{]}
     \PYG{k}{return} \PYG{n}{tokens}
 
-\PYG{k}{def} \PYG{n+nf}{get\PYGZus{}clusters}\PYG{p}{(}\PYG{n}{shortname}\PYG{p}{,} \PYG{n}{length}\PYG{p}{,} \PYG{n}{cutoff}\PYG{o}{=}\PYG{l+m+mi}{5}\PYG{p}{,} \PYG{n}{subset}\PYG{o}{=}\PYG{k+kc}{None}\PYG{p}{)}\PYG{p}{:}
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{get\PYGZus{}clusters}\PYG{p}{(}\PYG{n}{shortname}\PYG{p}{,} \PYG{n}{length}\PYG{p}{,} \PYG{n}{cutoff}\PYG{o}{=}\PYG{l+m+mi}{5}\PYG{p}{,} \PYG{n}{subset}\PYG{o}{=}\PYG{k+kc}{None}\PYG{p}{)}\PYG{p}{:}
 \PYG{+w}{    }\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
 \PYG{l+s+sd}{    Fetches n\PYGZhy{}grams using the \PYGZsq{}cluster\PYGZsq{} endpoint.}
 \PYG{l+s+sd}{    Returns a OrderedDict of clusters to counts.}
