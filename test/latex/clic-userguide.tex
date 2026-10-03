@@ -1458,33 +1458,36 @@ containing \sphinxstyleemphasis{cried} are tagged for character gender}\label{\d
 \sphinxstepscope
 
 
-\chapter{Clusters}
-\label{\detokenize{clicanalysis/clusters:clusters}}\label{\detokenize{clicanalysis/clusters:id1}}\label{\detokenize{clicanalysis/clusters::doc}}
+\chapter{N\sphinxhyphen{}grams}
+\label{\detokenize{clicanalysis/ngrams:n-grams}}\label{\detokenize{clicanalysis/ngrams:ngrams}}\label{\detokenize{clicanalysis/ngrams::doc}}
 \sphinxAtStartPar
-The output of the cluster tool generates frequency lists of single words
-and ‘clusters’ (repeated sequences of words). Clusters are also called
-‘n\sphinxhyphen{}grams’, where ‘n’ stands for the length of the phrase. If we choose a
+The output of the n\sphinxhyphen{}gram tool generates frequency lists of single words
+and ‘n\sphinxhyphen{}grams’ (repeated sequences of words). N\sphinxhyphen{}grams are also called
+‘clusters’.
+
+\sphinxAtStartPar
+If we choose a
 ‘1\sphinxhyphen{}gram’ (single word), we retrieve a simple word list. (In \sphinxstyleemphasis{Oliver
 Twist}, for example, the top 10 words retrieved from this tool are \sphinxstyleemphasis{the,
 and, to, of, a, he, in, his, that} \textendash{} all function words, as we would
-generally expect.) From version 2.0 onwards, CLiC supports clusters of
+generally expect.) From version 2.0 onwards, CLiC supports n\sphinxhyphen{}grams of
 length 1 (single words) up to 7 (\sphinxtitleref{i am very much obliged to you}), as
-illustrated in \hyperref[\detokenize{clicanalysis/clusters:figure-analysis-clusters-ngrams}]{Fig.\@ \ref{\detokenize{clicanalysis/clusters:figure-analysis-clusters-ngrams}}}.
+illustrated in \hyperref[\detokenize{clicanalysis/ngrams:figure-analysis-ngrams}]{Fig.\@ \ref{\detokenize{clicanalysis/ngrams:figure-analysis-ngrams}}}.
 
 \begin{figure}[htbp]
 \centering
 \capstart
 
-\noindent\sphinxincludegraphics{{figure-analysis-clusters-ngrams}.png}
-\caption{Cluster options}\label{\detokenize{clicanalysis/clusters:id2}}\label{\detokenize{clicanalysis/clusters:figure-analysis-clusters-ngrams}}\end{figure}
+\noindent\sphinxincludegraphics{{figure-analysis-ngrams}.png}
+\caption{N\sphinxhyphen{}gram options}\label{\detokenize{clicanalysis/ngrams:id1}}\label{\detokenize{clicanalysis/ngrams:figure-analysis-ngrams}}\end{figure}
 
 \sphinxAtStartPar
 As in the other tabs, you can restrict the search to a particular subset
 (\sphinxstylestrong{‘Only in subsets: Select an Option’}) so that, for example, you can
-create frequency lists for clusters in quotes (or any of the other
+create frequency lists for n\sphinxhyphen{}grams in quotes (or any of the other
 subsets). You can save the resulting list as a CSV file (for example for
 use in a spreadsheet viewer) by clicking the \sphinxstylestrong{‘Save’} button at the
-top. Note that the CLiC ‘Cluster’ tab will display words and clusters
+top. Note that the CLiC ‘N\sphinxhyphen{}grams’ tab will display words and n\sphinxhyphen{}grams
 with a minimum frequency of 5.
 
 \sphinxstepscope
@@ -1496,9 +1499,9 @@ with a minimum frequency of 5.
 The keywords tool finds words (and phrases) that are used significantly
 more often in one corpus compared to another. CLiC incorporates the
 keyword extraction formula reported by \sphinxcite{references:rayson-garside-2000}. Apart
-from comparing single words, CLiC also allows you to compare clusters.
-Whereas the cluster tab focuses only on one corpus, the Keywords
-function can compare cluster lists. You have to make selections for the
+from comparing single words, CLiC also allows you to compare n\sphinxhyphen{}grams.
+Whereas the N\sphinxhyphen{}grams tab focuses only on one corpus, the Keywords
+function can compare n\sphinxhyphen{}gram lists. You have to make selections for the
 following options (also see
 \hyperref[\detokenize{clicanalysis/keywords:figure-analysis-keywords-settings}]{Fig.\@ \ref{\detokenize{clicanalysis/keywords:figure-analysis-keywords-settings}}}):
 \begin{itemize}
@@ -1546,7 +1549,7 @@ two sets of corpora for the keyword comparison \textendash{} target and referenc
 \capstart
 
 \noindent\sphinxincludegraphics{{figure-analysis-keywords-19thcentury}.png}
-\caption{Key 5\sphinxhyphen{}word clusters in Oliver Twist ‘quotes’ compared to
+\caption{Key 5\sphinxhyphen{}word n\sphinxhyphen{}grams in Oliver Twist ‘quotes’ compared to
 ‘quotes’ in the 19th Century Reference Corpus}\label{\detokenize{clicanalysis/keywords:id5}}\label{\detokenize{clicanalysis/keywords:figure-analysis-keywords-19thcentury}}\end{figure}
 
 \sphinxAtStartPar
@@ -1560,7 +1563,7 @@ Century Reference Corpus (quotes), we retrieve the results displayed in
 calculation, please refer to \sphinxcite{references:rayson-garside-2000}).
 
 \sphinxAtStartPar
-The frequency threshold of 5 used for the cluster tab is not applied to
+The frequency threshold of 5 used for the N\sphinxhyphen{}grams tab is not applied to
 the keyword tab, so that all frequencies are compared. The keyword
 output shows the top 3000 results (for most comparisons, you will yield
 fewer results, though). Moreover, CLiC only generates so\sphinxhyphen{}called
@@ -1713,10 +1716,10 @@ using the \sphinxcode{\sphinxupquote{get\_tokens()}} function. The subset endpoi
 at \sphinxcode{\sphinxupquote{clic.subset}}.
 
 \sphinxAtStartPar
-The \sphinxstyleemphasis{cluster} endpoint is used to retrieve n\sphinxhyphen{}grams and their counts. In
-the example code the clusters endpoint is called using the
-\sphinxcode{\sphinxupquote{get\_clusters()}} function. The cluster endpoint is documented at
-\sphinxcode{\sphinxupquote{clic.cluster}}.
+The \sphinxstyleemphasis{ngram} endpoint is used to retrieve n\sphinxhyphen{}grams and their counts. In
+the example code the ngrams endpoint is called using the
+\sphinxcode{\sphinxupquote{get\_ngrams()}} function. The ngram endpoint is documented at
+\sphinxcode{\sphinxupquote{clic.ngram}}.
 
 \sphinxAtStartPar
 We would be interested to hear about how you use the CLiC API and are
@@ -1891,15 +1894,15 @@ German 19th Century Reference Corpus
         \PYG{k}{return} \PYG{p}{[}\PYG{n}{i}\PYG{o}{.}\PYG{n}{lower}\PYG{p}{(}\PYG{p}{)} \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n}{tokens}\PYG{p}{]}
     \PYG{k}{return} \PYG{n}{tokens}
 
-\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{get\PYGZus{}clusters}\PYG{p}{(}\PYG{n}{shortname}\PYG{p}{,} \PYG{n}{length}\PYG{p}{,} \PYG{n}{cutoff}\PYG{o}{=}\PYG{l+m+mi}{5}\PYG{p}{,} \PYG{n}{subset}\PYG{o}{=}\PYG{k+kc}{None}\PYG{p}{)}\PYG{p}{:}
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{get\PYGZus{}ngrams}\PYG{p}{(}\PYG{n}{shortname}\PYG{p}{,} \PYG{n}{length}\PYG{p}{,} \PYG{n}{cutoff}\PYG{o}{=}\PYG{l+m+mi}{5}\PYG{p}{,} \PYG{n}{subset}\PYG{o}{=}\PYG{k+kc}{None}\PYG{p}{)}\PYG{p}{:}
 \PYG{+w}{    }\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
-\PYG{l+s+sd}{    Fetches n\PYGZhy{}grams using the \PYGZsq{}cluster\PYGZsq{} endpoint.}
-\PYG{l+s+sd}{    Returns a OrderedDict of clusters to counts.}
+\PYG{l+s+sd}{    Fetches n\PYGZhy{}grams using the \PYGZsq{}ngram\PYGZsq{} endpoint.}
+\PYG{l+s+sd}{    Returns a OrderedDict of ngrams to counts.}
 
 \PYG{l+s+sd}{    \PYGZhy{} shortname: can be any value from the \PYGZsq{}corpus\PYGZsq{} or \PYGZsq{}shortname\PYGZsq{} columns returned}
 \PYG{l+s+sd}{          by get\PYGZus{}lookup() can be a string or a list of strings}
-\PYG{l+s+sd}{    \PYGZhy{} length: cluster length to search for, one of 1/3/4/5 (NB: There is no 2)}
-\PYG{l+s+sd}{    \PYGZhy{} cutoff: [default: 5] the cutoff frequency, if a cluster occurs less times}
+\PYG{l+s+sd}{    \PYGZhy{} length: ngram length to search for, one of 1/3/4/5 (NB: There is no 2)}
+\PYG{l+s+sd}{    \PYGZhy{} cutoff: [default: 5] the cutoff frequency, if an n\PYGZhy{}gram occurs less times}
 \PYG{l+s+sd}{          than this it is not returned}
 \PYG{l+s+sd}{    \PYGZhy{} subset: [optional] any one of \PYGZdq{}shortsus\PYGZdq{}, \PYGZdq{}longsus\PYGZdq{}, \PYGZdq{}nonquote\PYGZdq{}, \PYGZdq{}quote\PYGZdq{}}
 \PYG{l+s+sd}{    \PYGZdq{}\PYGZdq{}\PYGZdq{}}
@@ -1911,9 +1914,9 @@ German 19th Century Reference Corpus
             \PYG{k}{raise} \PYG{n+ne}{ValueError}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{bad subset parameter: }\PYG{l+s+s1}{\PYGZdq{}}\PYG{l+s+si}{\PYGZpc{}s}\PYG{l+s+s1}{\PYGZdq{}}\PYG{l+s+s1}{\PYGZsq{}} \PYG{o}{\PYGZpc{}} \PYG{n}{subset}\PYG{p}{)}
         \PYG{n}{query} \PYG{o}{=} \PYG{n}{query} \PYG{o}{+} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{\PYGZam{}subset=}\PYG{l+s+si}{\PYGZpc{}s}\PYG{l+s+s2}{\PYGZdq{}} \PYG{o}{\PYGZpc{}} \PYG{n}{subset}
     \PYG{n}{query} \PYG{o}{=} \PYG{n}{query} \PYG{o}{+} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{\PYGZam{}clusterlength=}\PYG{l+s+si}{\PYGZpc{}d}\PYG{l+s+s2}{\PYGZam{}cutoff=}\PYG{l+s+si}{\PYGZpc{}d}\PYG{l+s+s2}{\PYGZdq{}} \PYG{o}{\PYGZpc{}} \PYG{p}{(}\PYG{n}{length}\PYG{p}{,} \PYG{n}{cutoff}\PYG{p}{)}
-    \PYG{n}{rv} \PYG{o}{=} \PYG{n}{api\PYGZus{}request}\PYG{p}{(}\PYG{n}{endpoint}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{cluster}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,} \PYG{n}{query}\PYG{o}{=}\PYG{n}{query}\PYG{p}{)}
-    \PYG{n}{clusters} \PYG{o}{=} \PYG{n}{OrderedDict}\PYG{p}{(}\PYG{n+nb}{sorted}\PYG{p}{(}\PYG{n}{rv}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{data}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{,} \PYG{n}{key}\PYG{o}{=}\PYG{n}{itemgetter}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{,} \PYG{n}{reverse}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{)}\PYG{p}{)}
-    \PYG{k}{return} \PYG{n}{clusters}
+    \PYG{n}{rv} \PYG{o}{=} \PYG{n}{api\PYGZus{}request}\PYG{p}{(}\PYG{n}{endpoint}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{ngram}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,} \PYG{n}{query}\PYG{o}{=}\PYG{n}{query}\PYG{p}{)}
+    \PYG{n}{ngrams} \PYG{o}{=} \PYG{n}{OrderedDict}\PYG{p}{(}\PYG{n+nb}{sorted}\PYG{p}{(}\PYG{n}{rv}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{data}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{,} \PYG{n}{key}\PYG{o}{=}\PYG{n}{itemgetter}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{,} \PYG{n}{reverse}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{)}\PYG{p}{)}
+    \PYG{k}{return} \PYG{n}{ngrams}
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
@@ -1998,11 +2001,11 @@ Keep each text separate:
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
-And now lets get some clusters for the Jane Austen novels:
+And now lets get some ngrams for the Jane Austen novels:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{austen\PYGZus{}clusters} \PYG{o}{=} \PYG{n}{get\PYGZus{}clusters}\PYG{p}{(}\PYG{n}{shortname}\PYG{o}{=}\PYG{n}{wanted}\PYG{p}{,} \PYG{n}{length}\PYG{o}{=}\PYG{l+m+mi}{5}\PYG{p}{,} \PYG{n}{cutoff}\PYG{o}{=}\PYG{l+m+mi}{5}\PYG{p}{,} \PYG{n}{subset}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{quote}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)}
-\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{json}\PYG{o}{.}\PYG{n}{dumps}\PYG{p}{(}\PYG{n}{austen\PYGZus{}clusters}\PYG{p}{,} \PYG{n}{indent}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{)}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{austen\PYGZus{}ngrams} \PYG{o}{=} \PYG{n}{get\PYGZus{}ngrams}\PYG{p}{(}\PYG{n}{shortname}\PYG{o}{=}\PYG{n}{wanted}\PYG{p}{,} \PYG{n}{length}\PYG{o}{=}\PYG{l+m+mi}{5}\PYG{p}{,} \PYG{n}{cutoff}\PYG{o}{=}\PYG{l+m+mi}{5}\PYG{p}{,} \PYG{n}{subset}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{quote}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{json}\PYG{o}{.}\PYG{n}{dumps}\PYG{p}{(}\PYG{n}{austen\PYGZus{}ngrams}\PYG{p}{,} \PYG{n}{indent}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{)}
 \PYG{g+go}{\PYGZob{}}
 \PYG{g+go}{  \PYGZdq{}i do not know what\PYGZdq{}: 26,}
 \PYG{g+go}{  \PYGZdq{}i am sure you will\PYGZdq{}: 16,}

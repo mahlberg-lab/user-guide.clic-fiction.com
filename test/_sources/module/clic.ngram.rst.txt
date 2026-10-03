@@ -1,4 +1,4 @@
-.. automodule:: clic.cluster
+.. automodule:: clic.ngram
    :members:
    :undoc-members:
    :show-inheritance:

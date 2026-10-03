@@ -18,13 +18,13 @@ Submodules
    :maxdepth: 10
 
    clic.app
-   clic.cluster
    clic.concordance
    clic.count
    clic.errors
    clic.icuconfig
    clic.keyword
    clic.metadata
+   clic.ngram
    clic.stream_json
    clic.subset
    clic.text

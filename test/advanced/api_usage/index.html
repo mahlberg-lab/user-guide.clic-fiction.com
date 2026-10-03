@@ -77,10 +77,10 @@ text, these subsets are: quoted text, non-quoted text, long suspensions
 or short suspensions. In the example code the subset endpoint is called
 using the <code class="docutils literal notranslate"><span class="pre">get_tokens()</span></code> function. The subset endpoint is documented
 at <code class="xref py py-mod docutils literal notranslate"><span class="pre">clic.subset</span></code>.</p>
-<p>The <em>cluster</em> endpoint is used to retrieve n-grams and their counts. In
-the example code the clusters endpoint is called using the
-<code class="docutils literal notranslate"><span class="pre">get_clusters()</span></code> function. The cluster endpoint is documented at
-<a class="reference internal" href="../../module/clic.cluster/#module-clic.cluster" title="clic.cluster"><code class="xref py py-mod docutils literal notranslate"><span class="pre">clic.cluster</span></code></a>.</p>
+<p>The <em>ngram</em> endpoint is used to retrieve n-grams and their counts. In
+the example code the ngrams endpoint is called using the
+<code class="docutils literal notranslate"><span class="pre">get_ngrams()</span></code> function. The ngram endpoint is documented at
+<a class="reference internal" href="../../module/clic.ngram/#module-clic.ngram" title="clic.ngram"><code class="xref py py-mod docutils literal notranslate"><span class="pre">clic.ngram</span></code></a>.</p>
 <p>We would be interested to hear about how you use the CLiC API and are
 always happy to consider CLiC related guest posts for the
 <a class="reference external" href="https://blog.bham.ac.uk/clic-dickens/">CLiC blog</a>. To let us know
@@ -204,15 +204,15 @@ CLiC web interface and those used by the CLiC API.</p>
         <span class="k">return</span> <span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">tokens</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">get_clusters</span><span class="p">(</span><span class="n">shortname</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_ngrams</span><span class="p">(</span><span class="n">shortname</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Fetches n-grams using the &#39;cluster&#39; endpoint.</span>
-<span class="sd">    Returns a OrderedDict of clusters to counts.</span>
+<span class="sd">    Fetches n-grams using the &#39;ngram&#39; endpoint.</span>
+<span class="sd">    Returns a OrderedDict of ngrams to counts.</span>
 
 <span class="sd">    - shortname: can be any value from the &#39;corpus&#39; or &#39;shortname&#39; columns returned</span>
 <span class="sd">          by get_lookup() can be a string or a list of strings</span>
-<span class="sd">    - length: cluster length to search for, one of 1/3/4/5 (NB: There is no 2)</span>
-<span class="sd">    - cutoff: [default: 5] the cutoff frequency, if a cluster occurs less times</span>
+<span class="sd">    - length: ngram length to search for, one of 1/3/4/5 (NB: There is no 2)</span>
+<span class="sd">    - cutoff: [default: 5] the cutoff frequency, if an n-gram occurs less times</span>
 <span class="sd">          than this it is not returned</span>
 <span class="sd">    - subset: [optional] any one of &quot;shortsus&quot;, &quot;longsus&quot;, &quot;nonquote&quot;, &quot;quote&quot;</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -224,9 +224,9 @@ CLiC web interface and those used by the CLiC API.</p>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;bad subset parameter: &quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="n">subset</span><span class="p">)</span>
         <span class="n">query</span> <span class="o">=</span> <span class="n">query</span> <span class="o">+</span> <span class="s2">&quot;&amp;subset=</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">subset</span>
     <span class="n">query</span> <span class="o">=</span> <span class="n">query</span> <span class="o">+</span> <span class="s2">&quot;&amp;clusterlength=</span><span class="si">%d</span><span class="s2">&amp;cutoff=</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">)</span>
-    <span class="n">rv</span> <span class="o">=</span> <span class="n">api_request</span><span class="p">(</span><span class="n">endpoint</span><span class="o">=</span><span class="s2">&quot;cluster&quot;</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">)</span>
-    <span class="n">clusters</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">rv</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span> <span class="n">key</span><span class="o">=</span><span class="n">itemgetter</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">clusters</span>
+    <span class="n">rv</span> <span class="o">=</span> <span class="n">api_request</span><span class="p">(</span><span class="n">endpoint</span><span class="o">=</span><span class="s2">&quot;ngram&quot;</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">)</span>
+    <span class="n">ngrams</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">rv</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span> <span class="n">key</span><span class="o">=</span><span class="n">itemgetter</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">ngrams</span>
 </pre></div>
 </div>
 <p>Find out what texts are available:</p>
@@ -295,9 +295,9 @@ CLiC web interface and those used by the CLiC API.</p>
 <span class="go">[&#39;poor&#39;, &#39;miss&#39;, &#39;taylor&#39;, &#39;i&#39;, &#39;wish&#39;, &#39;she&#39;, &#39;were&#39;, &#39;here&#39;, &#39;again&#39;]</span>
 </pre></div>
 </div>
-<p>And now lets get some clusters for the Jane Austen novels:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">austen_clusters</span> <span class="o">=</span> <span class="n">get_clusters</span><span class="p">(</span><span class="n">shortname</span><span class="o">=</span><span class="n">wanted</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s2">&quot;quote&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">austen_clusters</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+<p>And now lets get some ngrams for the Jane Austen novels:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">austen_ngrams</span> <span class="o">=</span> <span class="n">get_ngrams</span><span class="p">(</span><span class="n">shortname</span><span class="o">=</span><span class="n">wanted</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="s2">&quot;quote&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">austen_ngrams</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
 <span class="go">{</span>
 <span class="go">  &quot;i do not know what&quot;: 26,</span>
 <span class="go">  &quot;i am sure you will&quot;: 16,</span>
@@ -362,7 +362,7 @@ would like to contribute to this package, please get in touch at
 <li class="toctree-l1"><a class="reference internal" href="../../clicanalysis/concordance/">Concordance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../clicanalysis/flexiconc/">FlexiConc</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../clicanalysis/subsets/">Subsets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../clicanalysis/clusters/">Clusters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../clicanalysis/ngrams/">N-grams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../clicanalysis/keywords/">Keywords</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../clicanalysis/counts/">Counts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../clicanalysis/texts/">Texts</a></li>
